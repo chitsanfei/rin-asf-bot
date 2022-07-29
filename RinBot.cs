@@ -68,6 +68,8 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 				case "R18" when access >= EAccess.Operator:
 					string? randomSetuR18URL = await SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return !string.IsNullOrEmpty(randomSetuR18URL) ? randomSetuR18URL : LocalizationZHCN.SetuNotFound;
+				case "R18" when access < EAccess.Operator:
+					return LocalizationZHCN.NoPermissionWarning;
 				case "HITO":
 					string? hitokoto = await HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return !string.IsNullOrEmpty(hitokoto) ? hitokoto : LocalizationZHCN.HitokotoNotFound;
@@ -75,8 +77,9 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 					Uri? randomCatURL = await CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return randomCatURL != null ? randomCatURL.ToString() : LocalizationZHCN.CatNotFoundOrLost;
 				case "H": return LocalizationZHCN.HelpMenu;
+				case "ABT": return LocalizationZHCN.About;
 				default:
-					return null;
+					return LocalizationZHCN.OutOfOrderList;
 			}
 		}
 
