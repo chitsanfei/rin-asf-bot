@@ -82,16 +82,14 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 
 		public Task OnBotDisconnected(Bot bot, EResult reason)
 		{
-			throw new NotImplementedException();
+			ASF.ArchiLogger.LogGenericWarning(LocalizationZHCN.BotDisconnectedWarning);
+			return Task.CompletedTask;
 		}
 		
 		public Task<bool> OnBotFriendRequest(Bot bot, ulong steamID) => Task.FromResult(true);
 
-		public Task OnBotDestroy(Bot bot)
-		{
-			throw new NotImplementedException();
-		}
-		
+		public Task OnBotDestroy(Bot bot) => Task.CompletedTask;
+
 		public async Task OnBotInitModules(Bot bot, IReadOnlyDictionary<string, JToken>? additionalConfigProperties = null)
 		{
 			await bot.Actions.Pause(true).ConfigureAwait(false);
@@ -111,7 +109,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			return Task.FromResult((string?)"");
 		}
 
-		public Task<bool> OnBotTradeOffer(Bot bot, TradeOffer tradeOffer) => Task.FromResult(bot.BotName.StartsWith("TrashBot", StringComparison.OrdinalIgnoreCase));
+		public Task<bool> OnBotTradeOffer(Bot bot, TradeOffer tradeOffer) => Task.FromResult(false);
 
 	}
 }

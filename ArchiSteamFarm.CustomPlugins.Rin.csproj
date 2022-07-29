@@ -30,4 +30,7 @@
     </Folder>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Api\" />
+  </ItemGroup>
 </Project>
