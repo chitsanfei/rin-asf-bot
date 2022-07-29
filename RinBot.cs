@@ -68,6 +68,8 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 				case "R18" when access >= EAccess.Operator:
 					string? randomSetuR18URL = await SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return !string.IsNullOrEmpty(randomSetuR18URL) ? randomSetuR18URL : LocalizationZHCN.SetuNotFound;
+				case "R18" when access < EAccess.Operator:
+					return LocalizationZHCN.NoPermissionWarning;
 				case "HITO":
 					string? hitokoto = await HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return !string.IsNullOrEmpty(hitokoto) ? hitokoto : LocalizationZHCN.HitokotoNotFound;
@@ -75,23 +77,22 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 					Uri? randomCatURL = await CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return randomCatURL != null ? randomCatURL.ToString() : LocalizationZHCN.CatNotFoundOrLost;
 				case "H": return LocalizationZHCN.HelpMenu;
+				case "ABT": return LocalizationZHCN.About;
 				default:
-					return null;
+					return LocalizationZHCN.OutOfOrderList;
 			}
 		}
 
 		public Task OnBotDisconnected(Bot bot, EResult reason)
 		{
-			throw new NotImplementedException();
+			ASF.ArchiLogger.LogGenericWarning(LocalizationZHCN.BotDisconnectedWarning);
+			return Task.CompletedTask;
 		}
 		
 		public Task<bool> OnBotFriendRequest(Bot bot, ulong steamID) => Task.FromResult(true);
 
-		public Task OnBotDestroy(Bot bot)
-		{
-			throw new NotImplementedException();
-		}
-		
+		public Task OnBotDestroy(Bot bot) => Task.CompletedTask;
+
 		public async Task OnBotInitModules(Bot bot, IReadOnlyDictionary<string, JToken>? additionalConfigProperties = null)
 		{
 			await bot.Actions.Pause(true).ConfigureAwait(false);
@@ -111,7 +112,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			return Task.FromResult((string?)"");
 		}
 
-		public Task<bool> OnBotTradeOffer(Bot bot, TradeOffer tradeOffer) => Task.FromResult(bot.BotName.StartsWith("TrashBot", StringComparison.OrdinalIgnoreCase));
+		public Task<bool> OnBotTradeOffer(Bot bot, TradeOffer tradeOffer) => Task.FromResult(false);
 
 	}
 }
