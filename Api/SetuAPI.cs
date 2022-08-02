@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using ArchiSteamFarm.Web;
 using ArchiSteamFarm.Web.Responses;
 
-namespace ArchiSteamFarm.CustomPlugins.Rin
+namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 {
 	internal static class SetuAPI
 	{

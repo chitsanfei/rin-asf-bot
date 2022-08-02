@@ -17,7 +17,7 @@ public static class Localization
 /// <summary>
 /// 简体中文的本地化内容。
 /// </summary>
-public static class LocalizationZHCN
+public static class Langs
 {
     /// <summary>
     /// log中的提示语。
