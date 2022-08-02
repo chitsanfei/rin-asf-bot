@@ -5,7 +5,7 @@ using ArchiSteamFarm.Web.Responses;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
-namespace ArchiSteamFarm.CustomPlugins.Rin;
+namespace ArchiSteamFarm.CustomPlugins.Rin.Api;
 
 internal static class CatAPI
 {
