@@ -53,7 +53,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 
 		public Task OnBotInit(Steam.Bot bot)
 		{
-			ASF.ArchiLogger.LogGenericWarning(Langs.InitWarning);
+			ASF.ArchiLogger.LogGenericWarning(Langs.InitWarning + Langs.DebugASFVersion);
 			ASF.ArchiLogger.LogGenericWarning(Langs.InitProgramUnstableWarning);
 			return Task.CompletedTask;
 		}
@@ -66,10 +66,10 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			{
 				case "SETU":
 					string? randomSetuURL = await SetuAPI.GetRandomSetuURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return !string.IsNullOrEmpty(randomSetuURL) ? randomSetuURL : Bot.Rin.Localization.Langs.SetuNotFound;
+					return !string.IsNullOrEmpty(randomSetuURL) ? randomSetuURL : Langs.SetuNotFound;
 				case "R18" when access >= EAccess.Operator:
 					string? randomSetuR18URL = await SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return !string.IsNullOrEmpty(randomSetuR18URL) ? randomSetuR18URL : Bot.Rin.Localization.Langs.SetuNotFound;
+					return !string.IsNullOrEmpty(randomSetuR18URL) ? randomSetuR18URL : Langs.SetuNotFound;
 				case "R18" when access < EAccess.Operator:
 					return Langs.NoPermissionWarning;
 				case "HITO":
@@ -111,6 +111,17 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			{
 				return Task.FromResult<string?>(null);
 			}
+			
+			if (message.ToUpperInvariant().Contains('.') & message.Length > 4)
+			{
+				string[] webDomainList = { "http", ".top", ".com", ".cat", ".mba", ".cn", ".xyz", ".cc", ".co", ".icu", ".uk", ".us", ".ca", ".sh", ".sk", ".st", ".au" };
+				if (webDomainList.Any(s => s.ToLowerInvariant().Contains(s)))
+				{
+					string reply = "/pre " + $"🤔 -> SteamUser64ID:{steamID}\n" + Langs.WebLinkWarning;
+					return Task.FromResult((string?)reply);
+				}
+			}
+			
 			return Task.FromResult((string?)"");
 		}
 
