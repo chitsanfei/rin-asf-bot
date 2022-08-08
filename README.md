@@ -29,5 +29,5 @@ Rin is named from Chinese character 「凛」, no special meaning.
 ### Features
 - Post anime pictures, including steam group chat and private chat.
 - Post cat pictures, it's developed from ASF offcial plugin demo.
-- Send hitokoto, which is probably meanful.
+- Send hitokoto, which is probably meaningful.
 - Send website link warning to tell people away from swindle.
