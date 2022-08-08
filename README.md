@@ -1,5 +1,21 @@
-# Rin-Asf-Bot  
+<div align="center">
+![Icon](https://raw.githubusercontent.com/ShizukuWorld/rin-asf-bot/master/Resource/logo.jpeg)
+# RinBot
+</div>
 
+[![Github Issue](https://img.shields.io/github/issues/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/issues)
+[![Github Forks](https://img.shields.io/github/forks/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/fork)
+[![Github Stars](https://img.shields.io/github/stars/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot)
+[![GitHub License](https://img.shields.io/github/license/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/blob/master/LICENSE)
+
+---
+
+![Alt](https://repobeats.axiom.co/api/embed/61a2a479e454d603afe73c901b2342fc66c4846c.svg "Repobeats analytics image")
+
+---
+
+## Muti-Language Option
 [Simplified Chinese | 简体中文](./README_zhs.md)  
 
-Rin bot is designed for giving steam gamers better experience, based ArchiSteamFarm.
+## Description
+Rin bot is designed for giving steam gamers better experience, based [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm).
