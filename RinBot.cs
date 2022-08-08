@@ -115,7 +115,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			if (message.ToUpperInvariant().Contains('.') & message.Length > 4)
 			{
 				string[] webDomainList = { "http", ".top", ".com", ".cat", ".mba", ".cn", ".xyz", ".cc", ".co", ".icu", ".uk", ".us", ".ca", ".sh", ".sk", ".st", ".au" };
-				if (webDomainList.Any(s => s.ToLowerInvariant().Contains(s)))
+				if (webDomainList.Any(s => message.ToLowerInvariant().Contains(s)))
 				{
 					string reply = "/pre " + $"🤔 -> SteamUser64ID:{steamID}\n" + Langs.WebLinkWarning;
 					return Task.FromResult((string?)reply);
