@@ -1,5 +1,7 @@
 <div align="center">
+
 ![Icon](https://raw.githubusercontent.com/ShizukuWorld/rin-asf-bot/master/Resource/logo.jpeg)
+
 # RinBot
 </div>
 
@@ -19,3 +21,13 @@
 
 ## Description
 Rin bot is designed for giving steam gamers better experience, based [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm).
+
+Rin is named from Chinese character 「凛」, no special meaning.
+
+---
+
+### Features
+- Post anime pictures, including steam group chat and private chat.
+- Post cat pictures, it's developed from ASF offcial plugin demo.
+- Send hitokoto, which is probably meanful.
+- Send website link warning to tell people away from swindle.
