@@ -1,6 +1,6 @@
 <div align="center">
 
-![Icon](https://raw.githubusercontent.com/ShizukuWorld/rin-asf-bot/master/Resource/logo.jpeg)
+![Icon](https://raw.githubusercontent.com/ShizukuWorld/rin-asf-bot/master/rin-asf-bot/Resource/logo.jpeg)
 
 # RinBot
 </div>
