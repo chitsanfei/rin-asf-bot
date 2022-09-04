@@ -11,9 +11,18 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 {
 	internal static class SetuAPI
 	{
-		private const string URL = "https://el-bot-api.vercel.app/api";
-		private const string URL_debug = "https://api.lolicon.app/setu/v2";
+		/// <summary>
+        /// Picture API.
+        /// </summary>
+		private const string URL = "https://api.lolicon.app/setu/v2";
 
+		/// <summary>
+        /// Feach an animation picture normal.
+        /// </summary>
+        /// <param name="webBrowser">ASF Web</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">No Argument.</exception>
+        /// <exception cref="InvalidOperationException">An invalid operation occurred.</exception>
 		internal static async Task<string?> GetRandomSetuURL(WebBrowser webBrowser)
 		{
 			if (webBrowser == null)
@@ -21,23 +30,30 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 				throw new ArgumentNullException(nameof(webBrowser));
 			}
 
-			Uri request = new($"{URL}/setu");
+			Uri request = new($"{URL}/?size=regular&r18=0");
 
-			ObjectResponse<SetuResponse>? response = await webBrowser.UrlGetToJsonObject<SetuResponse>(request).ConfigureAwait(false);
+			ObjectResponse<LoliconJson>? response = await webBrowser.UrlGetToJsonObject<LoliconJson>(request).ConfigureAwait(false);
 
 			if (response == null)
 			{
 				return null;
 			}
 
-			if (string.IsNullOrEmpty(response.Content.Link))
+			if (string.IsNullOrEmpty(response.Content.data[0].urls.regular))
 			{
-				throw new InvalidOperationException(nameof(response.Content.Link));
+				throw new InvalidOperationException(nameof(response.Content.data));
 			}
 
-			return response.Content.Link;
+			return response.Content.data[0].urls.regular;
 		}
-		
+
+		/// <summary>
+		/// Feach an animation picture across r18 restriction.
+		/// </summary>
+		/// <param name="webBrowser"></param>
+		/// <returns></returns>
+		/// <exception cref="ArgumentNullException">No Argument.</exception>
+		/// <exception cref="InvalidOperationException">An invalid operation occurred.</exception>
 		internal static async Task<string?> GetRandomSetuR18URL(WebBrowser webBrowser)
 		{
 			if (webBrowser == null)
@@ -45,7 +61,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 				throw new ArgumentNullException(nameof(webBrowser));
 			}
 
-			Uri request = new($"{URL_debug}/?size=regular&r18=1");
+			Uri request = new($"{URL}/?size=regular&r18=1");
 
 			ObjectResponse<LoliconJson>? response = await webBrowser.UrlGetToJsonObject<LoliconJson>(request).ConfigureAwait(false);
 
@@ -90,42 +106,46 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 			//public string original { get; set; }
 		}
 
-		[SuppressMessage("ReSharper", "ClassCannotBeInstantiated")]
-		private sealed class SetuResponse
-		{
-			[JsonProperty(PropertyName = "pid", Required = Required.Always)]
-			internal readonly string Pid = "";
-			
-			[JsonProperty(PropertyName = "p", Required = Required.Always)]
-			internal readonly int P;
-			
-			[JsonProperty(PropertyName = "uid", Required = Required.Always)]
-			internal readonly int Uid;
-			
-			[JsonProperty(PropertyName = "title", Required = Required.Always)]
-			internal readonly string Title = "";
-			
-			[JsonProperty(PropertyName = "author", Required = Required.Always)]
-			internal readonly string Author = "";
-			
-			[JsonProperty(PropertyName = "url", Required = Required.Always)]
-			internal readonly string Link = "";
-			
-			[JsonProperty(PropertyName = "r18", Required = Required.Always)]
-			internal readonly bool R18;
-			
-			[JsonProperty(PropertyName = "width", Required = Required.Always)]
-			internal readonly int Width = 0;
-			
-			[JsonProperty(PropertyName = "height", Required = Required.Always)]
-			internal readonly int Height = 0;
-			
-			[JsonProperty(PropertyName = "tags", Required = Required.Always)]
-			internal readonly string[] Tags = null;
+		/*
+		 * It may be useless in feature.
+		 */
 
-			[JsonConstructor]
-			private SetuResponse() { }
-		}
+		//[SuppressMessage("ReSharper", "ClassCannotBeInstantiated")]
+		//private sealed class SetuResponse
+		//{
+		//	[JsonProperty(PropertyName = "pid", Required = Required.Always)]
+		//	internal readonly int Pid;
+			
+		//	[JsonProperty(PropertyName = "p", Required = Required.Always)]
+		//	internal readonly int P;
+			
+		//	[JsonProperty(PropertyName = "uid", Required = Required.Always)]
+		//	internal readonly int Uid;
+			
+		//	[JsonProperty(PropertyName = "title", Required = Required.Always)]
+		//	internal readonly string Title = "";
+			
+		//	[JsonProperty(PropertyName = "author", Required = Required.Always)]
+		//	internal readonly string Author = "";
+			
+		//	[JsonProperty(PropertyName = "url", Required = Required.Always)]
+		//	internal readonly string Link = "";
+			
+		//	[JsonProperty(PropertyName = "r18", Required = Required.Always)]
+		//	internal readonly bool R18;
+			
+		//	[JsonProperty(PropertyName = "width", Required = Required.Always)]
+		//	internal readonly int Width = 0;
+			
+		//	[JsonProperty(PropertyName = "height", Required = Required.Always)]
+		//	internal readonly int Height = 0;
+			
+		//	[JsonProperty(PropertyName = "tags", Required = Required.Always)]
+		//	internal readonly string[] Tags = null;
+
+		//	[JsonConstructor]
+		//	private SetuResponse() { }
+		//}
 		
 	}
 }
