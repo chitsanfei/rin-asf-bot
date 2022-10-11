@@ -127,8 +127,11 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			if (message.Length > 3)
 			{
 				string[] suicideWordList = { "自杀" };
-				string reply = Langs.SuicideWarning;
-				return Task.FromResult((string?)reply);
+				if (suicideWordList.Any(s => message.Contains(s)))
+				{
+					string reply = Langs.SuicideWarning;
+					return Task.FromResult((string?)reply);
+				}
 			}
 
 			return Task.FromResult((string?)"");
