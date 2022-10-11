@@ -72,12 +72,18 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 					return !string.IsNullOrEmpty(randomSetuR18URL) ? randomSetuR18URL : Langs.SetuNotFound;
 				case "R18" when access < EAccess.Operator:
 					return Langs.NoPermissionWarning;
+				case "ANIME":
+					string? AnimePicURL = await AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
+					return !string.IsNullOrEmpty(AnimePicURL) ? AnimePicURL : Langs.AnimePicNotFound;
 				case "HITO":
 					string? hitokoto = await HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return !string.IsNullOrEmpty(hitokoto) ? hitokoto : Langs.HitokotoNotFound;
 				case "CAT":
 					Uri? randomCatURL = await CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
 					return randomCatURL != null ? randomCatURL.ToString() : Langs.CatNotFoundOrLost;
+				case "DOG":
+					Uri? randomDogURL = await DogAPI.GetRandomDogURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
+					return randomDogURL != null ? randomDogURL.ToString() : Langs.DogNotFoundOrLost;
 				case "H": return Langs.HelpMenu;
 				case "ABT": return Langs.About;
 				default:
@@ -91,10 +97,6 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			return Task.CompletedTask;
 		}
 		
-		public Task<bool> OnBotFriendRequest(Steam.Bot bot, ulong steamID) => Task.FromResult(true);
-
-		public Task OnBotDestroy(Steam.Bot bot) => Task.CompletedTask;
-
 		public async Task OnBotInitModules(Steam.Bot bot, IReadOnlyDictionary<string, JToken>? additionalConfigProperties = null)
 		{
 			await bot.Actions.Pause(true).ConfigureAwait(false);
@@ -121,11 +123,23 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 					return Task.FromResult((string?)reply);
 				}
 			}
-			
+
+			if (message.Length > 3)
+			{
+				string[] suicideWordList = { "自杀" };
+				if (suicideWordList.Any(s => message.Contains(s)))
+				{
+					string reply = Langs.SuicideWarning;
+					return Task.FromResult((string?)reply);
+				}
+			}
+
 			return Task.FromResult((string?)"");
 		}
 
 		public Task<bool> OnBotTradeOffer(Steam.Bot bot, TradeOffer tradeOffer) => Task.FromResult(false);
+		public Task<bool> OnBotFriendRequest(Steam.Bot bot, ulong steamID) => Task.FromResult(false);
+		public Task OnBotDestroy(Steam.Bot bot) => Task.CompletedTask;
 
 	}
 }
