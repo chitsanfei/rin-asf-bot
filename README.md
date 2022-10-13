@@ -31,3 +31,10 @@ Rin is named from Chinese character 「凛」, no special meaning.
 - Post cat pictures, it's developed from ASF offcial plugin demo.
 - Send hitokoto, which is probably meaningful.
 - Send website link warning to tell people away from swindle.
+
+### Compatibility
+- RinBot should fully support to ArchiSteamFarm on Windows or Linux or MacOS.
+- RinBot is available only on specific version of ArchiSteamFarm, usually we notify which version we support when we make a new release.
+
+## Help & How to Use
+- See our github [WIKI](https://github.com/ShizukuWorld/rin-asf-bot/wiki) page.
