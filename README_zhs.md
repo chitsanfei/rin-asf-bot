@@ -23,6 +23,7 @@
 RinBot是设计为Steam提供更好的服务, 基于 [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm) 开发。
 
 RinBot的设计来源于汉字——凛，其并非有特殊含义。
+
 ---
 
 ### 功能
