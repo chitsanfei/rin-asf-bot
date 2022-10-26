@@ -28,13 +28,13 @@ Rin is named from Chinese character 「凛」, no special meaning.
 
 ### Features
 - Post anime pictures, including steam group chat and private chat.
-- Post cat pictures, it's developed from ASF offcial plugin demo.
+- Post cute cat pictures or dog pictures. (Code for cat picture bases on ArchiSteamFarm official plugin develop demo.)
 - Send hitokoto, which is probably meaningful.
 - Send website link warning to tell people away from swindle.
 
 ### Compatibility
 - RinBot should fully support to ArchiSteamFarm on Windows or Linux or MacOS.
-- RinBot is available only on specific version of ArchiSteamFarm, usually we notify which version we support when we make a new release.
+- RinBot is available only on specific version of ArchiSteamFarm, usually we notify which version we support when we make a new release. You shall use proper version of ASF at least no lower than we recommand one.
 
 ## Help & How to Use
-- See our github [WIKI](https://github.com/ShizukuWorld/rin-asf-bot/wiki) page.
+- Please visit our Github [Wiki Page](https://github.com/ShizukuWorld/rin-asf-bot/wiki).
