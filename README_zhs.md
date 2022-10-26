@@ -27,14 +27,15 @@ RinBot的设计来源于汉字——凛，其并非有特殊含义。
 ---
 
 ### 功能
-- 在Steam私聊或组聊天中获取二次元色图。
-- 发送猫猫图，这来自ASF官方例程。
+- 在Steam私聊或组聊天中获取二次元色图，或者是一点也不色的动漫图片。
+- 发送猫猫图和狗狗图。
 - 发送一句可能很有意义的一言。
 - 对链接进行警告。
+- 对严重心理障碍发作的人进行一个友好的小提醒。
 
 ### 兼容性
 - RinBot应完全支持Windows、Linux或MacOS上的ArchiSteamFarm。
-- RinBot仅在ArchiSteamFarm的特定版本上可用，通常我们在发布新版本时会通知我们支持哪个版本。
+- RinBot仅在ArchiSteamFarm的特定版本上可用，通常我们在发布新版本时会通知我们支持哪个版本，您应当确保ASF的版本至少不低于我们的测试版本。
 
 ## 如何使用 / 部署
-- 请详见我们的[WIKI](https://github.com/ShizukuWorld/rin-asf-bot/wiki) 页面.
+- 请详见我们的[WIKI](https://github.com/ShizukuWorld/rin-asf-bot/wiki)页面.
