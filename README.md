@@ -3,6 +3,9 @@
 ![Icon](https://raw.githubusercontent.com/ShizukuWorld/rin-asf-bot/master/rin-asf-bot/Resource/logo.jpeg)
 
 # RinBot
+
+To make a funny way in our boring life.
+
 </div>
 
 [![Github Issue](https://img.shields.io/github/issues/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/issues)
