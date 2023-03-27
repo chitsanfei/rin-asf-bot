@@ -16,13 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        path: 'asf-rin-bot'
+        submodules: 'recursive'
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./asf-rin-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build ./asf-rin-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj ./ArchiSteamFarm/ArchiSteamFarm
+/ArchiSteamFarm.csproj --no-restore
