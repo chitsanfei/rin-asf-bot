@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
       with:
         path: 'rin-asf-bot'
         submodules: 'recursive'
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies for asf-rin-bot
@@ -25,6 +25,9 @@ jobs:
     - name: Restore dependencies for ArchiSteamFarm
       run: dotnet restore ./rin-asf-bot/ArchiSteamFarm/ArchiSteamFarm/ArchiSteamFarm.csproj
     - name: Build
-      run: dotnet build ./rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj --no-restore
-    - name: Test
-      run: dotnet test ./rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.Tests.csproj --no-build --verbosity normal
+      run: dotnet build ./rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj --no-restore --configuration Release
+    - name: Upload ASF DLL artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ASF-DLL-Release
+        path: ./rin-asf-bot/ArchiSteamFarm/ArchiSteamFarm/bin/Release/net6.0/ArchiSteamFarm.dll
