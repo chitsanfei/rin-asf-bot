@@ -29,5 +29,5 @@ jobs:
     - name: Upload ASF DLL artifact
       uses: actions/upload-artifact@v2
       with:
-        name: ASF-DLL-Release
+        name: ArchiSteamFarm.CustomPlugins.RinBot
         path: ./rin-asf-bot/ArchiSteamFarm/ArchiSteamFarm/bin/Release/net6.0/ArchiSteamFarm.dll
