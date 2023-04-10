@@ -1,6 +1,6 @@
 <div align="center">
 
-![Icon](https://raw.githubusercontent.com/ShizukuWorld/rin-asf-bot/master/rin-asf-bot/Resource/logo.jpeg)
+![Icon](https://raw.githubusercontent.com/mashirosa/rin-asf-bot/master/rin-asf-bot/Resource/logo.jpeg)
 
 # RinBot
 
@@ -8,14 +8,14 @@ To make a funny way in our boring life.
 
 </div>
 
-[![Github Issue](https://img.shields.io/github/issues/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/issues)
-[![Github Forks](https://img.shields.io/github/forks/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/fork)
-[![Github Stars](https://img.shields.io/github/stars/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot)
-[![GitHub License](https://img.shields.io/github/license/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/blob/master/LICENSE)
+[![Github Issue](https://img.shields.io/github/issues/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/issues)
+[![Github Forks](https://img.shields.io/github/forks/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/fork)
+[![Github Stars](https://img.shields.io/github/stars/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot)
+[![GitHub License](https://img.shields.io/github/license/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/blob/master/LICENSE)
 
 ---
 
-![Alt](https://repobeats.axiom.co/api/embed/61a2a479e454d603afe73c901b2342fc66c4846c.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/10309d9ebe0dad4128646852628802e7dfe79ea3.svg "Repobeats analytics image")
 
 ---
 
@@ -40,4 +40,4 @@ Rin is named from Chinese character 「凛」, no special meaning.
 - RinBot is available only on specific version of ArchiSteamFarm, usually we notify which version we support when we make a new release. You shall use proper version of ASF at least no lower than we recommand one.
 
 ## Help & How to Use
-- Please visit our Github [Wiki Page](https://github.com/ShizukuWorld/rin-asf-bot/wiki).
+- Please visit our Github [Wiki Page](https://github.com/mashirosa/rin-asf-bot/wiki).
