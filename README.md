@@ -1,12 +1,10 @@
 <div align="center">
-
-![Icon](https://raw.githubusercontent.com/mashirosa/rin-asf-bot/master/rin-asf-bot/Resource/logo.jpeg)
-
-# RinBot
-
-To make a funny way in our boring life.
-
+  <img src="https://raw.githubusercontent.com/MashiroSA/rin-asf-bot/master/assets/logo.png">
+  <h1>MashiroSA/RinBot</h1>
+  <p>A highly useable Steam Pic Posting Bot on Steam, dev based on ASF.</p>
 </div>
+
+---
 
 [![Github Issue](https://img.shields.io/github/issues/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/issues)
 [![Github Forks](https://img.shields.io/github/forks/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/fork)
