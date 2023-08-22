@@ -19,13 +19,13 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="DebugASFVersion" xml:space="preserve">
-        <value>5.3.2.1</value>
+        <value>5.4.9.3</value>
     </data>
     <data name="PluginVersion" xml:space="preserve">
-        <value>1.0.3</value>
+        <value>1.0.4</value>
     </data>
     <data name="LastEditedTime" xml:space="preserve">
-        <value>2022/10/12</value>
+        <value>2023/8/22</value>
     </data>
     <data name="InitWarning" xml:space="preserve">
         <value>RinBotPlugin: Rin现在正在进行加载过程，测试版本为</value>
