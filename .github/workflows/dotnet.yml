@@ -30,4 +30,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ArchiSteamFarm.CustomPlugins.RinBot
-        path: ./rin-asf-bot/rin-asf-bot/bin/Release/net7.0/ArchiSteamFarm.dll
+        path: ./rin-asf-bot/rin-asf-bot/bin/Release/net7.0/ArchiSteamFarm.CustomPlugins.Rin.dll
