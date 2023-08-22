@@ -3,7 +3,7 @@
     <OutputType>Library</OutputType>
     <Description>ArchiSteamFarm.CustomPlugins.Bot.Rin</Description>
     <LangVersion>10</LangVersion>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <RootNamespace>ArchiSteamFarm.CustomPlugins.Bot.Rin</RootNamespace>
   </PropertyGroup>
@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" PrivateAssets="all" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" IncludeAssets="compile" Version="13.0.3" />
-    <PackageReference Include="SteamKit2" IncludeAssets="compile" Version="2.4.1" />
+    <PackageReference Include="SteamKit2" IncludeAssets="compile" Version="2.5.0-Beta.1" />
     <PackageReference Include="System.Composition.AttributedModel" IncludeAssets="compile" Version="7.0.0" />
   </ItemGroup>
 

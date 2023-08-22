@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
     - name: Restore dependencies for asf-rin-bot
       run: dotnet restore ./rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj
     - name: Restore dependencies for ArchiSteamFarm
@@ -30,4 +30,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ArchiSteamFarm.CustomPlugins.RinBot
-        path: ./rin-asf-bot/ArchiSteamFarm/ArchiSteamFarm/bin/Release/net6.0/ArchiSteamFarm.dll
+        path: ./rin-asf-bot/rin-asf-bot/bin/Release/net7.0/ArchiSteamFarm.CustomPlugins.Rin.dll

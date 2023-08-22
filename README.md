@@ -31,7 +31,6 @@ Rin is named from Chinese character 「凛」, no special meaning.
 - Post anime pictures, including steam group chat and private chat.
 - Post cute cat pictures or dog pictures. (Code for cat picture bases on ArchiSteamFarm official plugin develop demo.)
 - Send hitokoto, which is probably meaningful.
-- Send website link warning to tell people away from swindle.
 
 ### Compatibility
 - RinBot should fully support to ArchiSteamFarm on Windows or Linux or MacOS.

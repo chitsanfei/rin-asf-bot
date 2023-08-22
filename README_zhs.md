@@ -1,18 +1,19 @@
 <div align="center">
-
-![Icon](https://raw.githubusercontent.com/ShizukuWorld/rin-asf-bot/master/rin-asf-bot/Resource/logo.jpeg)
-
-# RinBot
+  <img src="https://raw.githubusercontent.com/MashiroSA/rin-asf-bot/master/assets/logo.png">
+  <h1>MashiroSA/RinBot</h1>
+  <p>A highly useable Steam Pic Posting Bot on Steam, dev based on ASF.</p>
 </div>
-
-[![Github Issue](https://img.shields.io/github/issues/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/issues)
-[![Github Forks](https://img.shields.io/github/forks/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/fork)
-[![Github Stars](https://img.shields.io/github/stars/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot)
-[![GitHub License](https://img.shields.io/github/license/ShizukuWorld/rin-asf-bot)](https://github.com/ShizukuWorld/rin-asf-bot/blob/master/LICENSE)
 
 ---
 
-![Alt](https://repobeats.axiom.co/api/embed/61a2a479e454d603afe73c901b2342fc66c4846c.svg "Repobeats analytics image")
+[![Github Issue](https://img.shields.io/github/issues/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/issues)
+[![Github Forks](https://img.shields.io/github/forks/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/fork)
+[![Github Stars](https://img.shields.io/github/stars/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot)
+[![GitHub License](https://img.shields.io/github/license/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/blob/master/LICENSE)
+
+---
+
+![Alt](https://repobeats.axiom.co/api/embed/10309d9ebe0dad4128646852628802e7dfe79ea3.svg "Repobeats analytics image")
 
 ---
 
@@ -31,11 +32,10 @@ RinBot的设计来源于汉字——凛，其并非有特殊含义。
 - 发送猫猫图和狗狗图。
 - 发送一句可能很有意义的一言。
 - 对链接进行警告。
-- 对严重心理障碍发作的人进行一个友好的小提醒。
 
 ### 兼容性
 - RinBot应完全支持Windows、Linux或MacOS上的ArchiSteamFarm。
 - RinBot仅在ArchiSteamFarm的特定版本上可用，通常我们在发布新版本时会通知我们支持哪个版本，您应当确保ASF的版本至少不低于我们的测试版本。
 
 ## 如何使用 / 部署
-- 请详见我们的[WIKI](https://github.com/ShizukuWorld/rin-asf-bot/wiki)页面.
+- 请详见我们的[WIKI](https://github.com/mashirosa/rin-asf-bot/wiki)页面.
