@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ArchiSteamFarm.Web;
 using ArchiSteamFarm.Web.Responses;
-using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
-using System.Threading;
-using System.Collections.Immutable;
-using System.Linq;
 
 namespace ArchiSteamFarm.CustomPlugins.Rin.Api;
 
-internal static class CatAPI
-{
+internal static class CatAPI {
 	private const string URL = "https://api.thecatapi.com";
 
 	internal static async Task<Uri?> GetRandomCatURL(WebBrowser webBrowser, CancellationToken cancellationToken = default) {
