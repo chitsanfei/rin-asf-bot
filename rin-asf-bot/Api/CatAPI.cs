@@ -9,13 +9,13 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api;
 
 internal static class CatAPI
 {
-	private const string URL = "https://aws.random.cat";
+	private const string URL = "https://api.thecatapi.com";
 
 	internal static async Task<Uri?> GetRandomCatURL(WebBrowser webBrowser)
 	{
 		ArgumentNullException.ThrowIfNull(webBrowser);
 
-		Uri request = new($"{URL}/meow");
+		Uri request = new($"{URL}/v1/images/search");
 
 		ObjectResponse<MeowResponse>? response = await webBrowser.UrlGetToJsonObject<MeowResponse>(request).ConfigureAwait(false);
 

@@ -26,6 +26,8 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 		[JsonProperty]
 		public bool CustomIsEnabledField { get; private set; } = true;
 
+		private Dictionary<ulong, (int count, DateTime lastRequestTime)> userRequestLimits = new Dictionary<ulong, (int, DateTime)>();
+
 		public Task OnASFInit(IReadOnlyDictionary<string, JToken>? additionalConfigProperties = null)
 		{
 			if (additionalConfigProperties == null)
@@ -62,6 +64,20 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 		
 		public async Task<string?> OnBotCommand(Steam.Bot bot, EAccess access, string message, string[] args, ulong steamID = 0)
 		{
+			const int maxRequestsPerMinute = 5;
+			if (userRequestLimits.TryGetValue(steamID, out var userLimit) && (DateTime.Now - userLimit.lastRequestTime).TotalMinutes < 1)
+			{
+				if (userLimit.count >= maxRequestsPerMinute)
+				{
+					return "You have exceeded the maximum number of requests per minute. Please wait a moment before trying again.";
+				}
+				userRequestLimits[steamID] = (userLimit.count + 1, DateTime.Now);
+			}
+			else
+			{
+				userRequestLimits[steamID] = (1, DateTime.Now);
+			}
+
 			Func<Task<string?>, string, Task<string?>> getUrlOrErrorMessage = async (getUrlTask, errorMessage) =>
 			{
 				string? url = await getUrlTask.ConfigureAwait(false);
