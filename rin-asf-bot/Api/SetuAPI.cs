@@ -12,7 +12,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 	internal static class SetuAPI
 	{
 		/// <summary>
-        /// Picture API.
+        /// Picture API. For lolicon.app website.
         /// </summary>
 		private const string URL = "https://api.lolicon.app/setu/v2";
 
@@ -78,12 +78,18 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 			return response.Content.data[0].urls.regular;
 		}
 		
+		/// <summary>
+		/// The response of the API.
+		/// </summary>
 		private class LoliconJson
 		{
 			public string error { get; set; }
 			public List<SetuImageJson> data { get; set; }
 		}
-
+		
+		/// <summary>
+		/// The response of the API. (Setu Image)
+		/// </summary>
 		private class SetuImageJson
 		{
 			public int pid { get; set; }

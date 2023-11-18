@@ -19,13 +19,13 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="DebugASFVersion" xml:space="preserve">
-        <value>5.4.9.3</value>
+        <value>5.4.13.4</value>
     </data>
     <data name="PluginVersion" xml:space="preserve">
-        <value>1.0.4</value>
+        <value>1.0.5</value>
     </data>
     <data name="LastEditedTime" xml:space="preserve">
-        <value>2023/8/22</value>
+        <value>2023/11/18</value>
     </data>
     <data name="InitWarning" xml:space="preserve">
         <value>RinBotPlugin: Rin现在正在进行加载过程，测试版本为</value>
@@ -66,15 +66,12 @@
         <value>好像没有对应的指令?输入「!h」可以查看可以使用的指令。</value>
     </data>
     <data name="About" xml:space="preserve">
-        <value>/code Github开源项目链接：https://github.com/mashirosa/rin-asf-bot</value>
+        <value>/code Github开源项目链接：https://github.com/mashirosa/rin-asf-bot
+在您使用该开源Bot时，请必须知悉本Bot并不收集任何用户信息，本Bot并未储存任何图片，本Bot使用的所有API均为第三方，作者不能控制或审计相关内容，本Bot仅供技术交流。请务必遵守您所在的相关法律使用。
+任何人员可以通过Github审查相关代码，并提出意见和改进。</value>
     </data>
     <data name="WebLinkWarning" xml:space="preserve">
-        <value>Rin侦测到可能的一条链接哦！请务必警惕陌生链接，网页千万条安全第一条，务必不要输入自己的账号密码，泄漏财产信息哦！</value>
-    </data>
-    <data name="SuicideWarning" xml:space="preserve">
-        <value>请不要放弃！人生漫漫，总有希望！
-世界并不完美，但请相信世间会有在乎您的人！ :bbtcat:
-若您需要帮助，可联系本组的组长，或立即向相关机构求助！</value>
+        <value>Rin侦测到可能的一条链接哦！诈骗多发，请务必警惕陌生链接，网页千万条安全第一条。不要输入自己的任何账号密码，泄漏财产信息哦！！！</value>
     </data>
     <data name="DogNotFoundOrLost" xml:space="preserve">
         <value>不好！好像狗狗走丢了哦！QAQ</value>

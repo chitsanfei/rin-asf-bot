@@ -62,30 +62,38 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 		
 		public async Task<string?> OnBotCommand(Steam.Bot bot, EAccess access, string message, string[] args, ulong steamID = 0)
 		{
-			switch (args[0].ToUpperInvariant())
+			Func<Task<string?>, string, Task<string?>> getUrlOrErrorMessage = async (getUrlTask, errorMessage) =>
 			{
-				case "SETU":
-					string? randomSetuURL = await SetuAPI.GetRandomSetuURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return !string.IsNullOrEmpty(randomSetuURL) ? randomSetuURL : Langs.SetuNotFound;
-				case "R18" when access >= EAccess.Operator:
-					string? randomSetuR18URL = await SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return !string.IsNullOrEmpty(randomSetuR18URL) ? randomSetuR18URL : Langs.SetuNotFound;
-				case "R18" when access < EAccess.Operator:
+				string? url = await getUrlTask.ConfigureAwait(false);
+				return !string.IsNullOrEmpty(url) ? url : errorMessage;
+			};
+
+			Func<Task<Uri?>, string, Task<string?>> getUriOrErrorMessage = async (getUriTask, errorMessage) =>
+			{
+				Uri? uri = await getUriTask.ConfigureAwait(false);
+				return uri != null ? uri.ToString() : errorMessage;
+			};
+
+			switch (args[0])
+			{
+				case string arg when string.Equals(arg, "SETU", StringComparison.OrdinalIgnoreCase):
+					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuURL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound);
+				case string arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase) && access >= EAccess.Operator:
+					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound);
+				case string arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase):
 					return Langs.NoPermissionWarning;
-				case "ANIME":
-					string? AnimePicURL = await AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return !string.IsNullOrEmpty(AnimePicURL) ? AnimePicURL : Langs.AnimePicNotFound;
-				case "HITO":
-					string? hitokoto = await HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return !string.IsNullOrEmpty(hitokoto) ? hitokoto : Langs.HitokotoNotFound;
-				case "CAT":
-					Uri? randomCatURL = await CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return randomCatURL != null ? randomCatURL.ToString() : Langs.CatNotFoundOrLost;
-				case "DOG":
-					Uri? randomDogURL = await DogAPI.GetRandomDogURL(bot.ArchiWebHandler.WebBrowser).ConfigureAwait(false);
-					return randomDogURL != null ? randomDogURL.ToString() : Langs.DogNotFoundOrLost;
-				case "H": return Langs.HelpMenu;
-				case "ABT": return Langs.About;
+				case string arg when string.Equals(arg, "ANIME", StringComparison.OrdinalIgnoreCase):
+					return await getUrlOrErrorMessage(AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser), Langs.AnimePicNotFound);
+				case string arg when string.Equals(arg, "HITO", StringComparison.OrdinalIgnoreCase):
+					return await getUrlOrErrorMessage(HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser), Langs.HitokotoNotFound);
+				case string arg when string.Equals(arg, "CAT", StringComparison.OrdinalIgnoreCase):
+					return await getUriOrErrorMessage(CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser), Langs.CatNotFoundOrLost);
+				case string arg when string.Equals(arg, "DOG", StringComparison.OrdinalIgnoreCase):
+					return await getUriOrErrorMessage(DogAPI.GetRandomDogURL(bot.ArchiWebHandler.WebBrowser), Langs.DogNotFoundOrLost);
+				case string arg when string.Equals(arg, "H", StringComparison.OrdinalIgnoreCase):
+					return Langs.HelpMenu;
+				case string arg when string.Equals(arg, "ABT", StringComparison.OrdinalIgnoreCase):
+					return Langs.About;
 				default:
 					return Langs.OutOfOrderList;
 			}
@@ -114,12 +122,17 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 				return Task.FromResult<string?>(null);
 			}
 			
-			if (message.ToUpperInvariant().Contains('.') & message.Length > 4)
+			if (message.Contains('.', StringComparison.OrdinalIgnoreCase) && message.Length > 4)
 			{
-				string[] webDomainList = { "http", ".top", ".com", ".cat", ".mba", ".cn", ".xyz", ".cc", ".co", ".icu", ".uk", ".us", ".ca", ".sh", ".sk", ".st", ".au" };
-				if (webDomainList.Any(s => message.ToLowerInvariant().Contains(s)))
+				HashSet<string> webDomainList = new HashSet<string> 
+				{ 
+					"http", ".top", ".com", ".cat", ".mba", ".cn", ".xyz", ".cc", ".co", ".icu", ".uk", ".us", ".ca", ".sh", ".sk", ".st", ".au",
+					".net", ".org", ".info", ".biz", ".name", ".museum", ".edu", ".gov", ".int", ".eu", ".aero", ".pro", ".travel", ".tel", ".jobs", ".coop", ".mobi", ".asia", ".post", ".xxx", ".global",
+					".de", ".fr", ".it", ".es", ".pl", ".ru", ".br", ".in", ".jp", ".kr", ".vn", ".mx", ".ar", ".za", ".ch", ".se", ".no", ".fi", ".dk", ".be", ".at", ".ir", ".il", ".pt", ".nz", ".hk", ".my", ".sg", ".th", ".ph", ".id"
+				};
+				if (webDomainList.Any(s => message.Contains(s, StringComparison.OrdinalIgnoreCase)))
 				{
-					string reply = "/pre " + $"🤔 -> SteamUser64ID:{steamID}\n" + Langs.WebLinkWarning;
+					string reply = string.Format("/pre 🤔 -> SteamUser64ID:{0}\n{1}", steamID, Langs.WebLinkWarning);
 					return Task.FromResult((string?)reply);
 				}
 			}

@@ -11,8 +11,18 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 {
 	internal static class HitokotoAPI
 	{
+		/// <summary>
+		/// URL to the API. hitokoto.cn. 
+		/// </summary>
 		private const string URL = "https://v1.hitokoto.cn/?encode=json";
 
+		/// <summary>
+		/// Get a random hitokoto text.
+		/// </summary>
+		/// <param name="webBrowser"></param>
+		/// <returns></returns>
+		/// <exception cref="ArgumentNullException"></exception>
+		/// <exception cref="InvalidOperationException"></exception>
 		internal static async Task<string?> GetHitokotoText(WebBrowser webBrowser)
 		{
 			if (webBrowser == null)
@@ -35,7 +45,10 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 
 			return response.Content.Hitokoto;
 		}
-
+		
+		/// <summary>
+		/// The response of the API.
+		/// </summary>
 		private class HitokotoJson
 		{
 			public string id { get; set; }

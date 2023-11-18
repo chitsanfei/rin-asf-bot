@@ -135,12 +135,6 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
             }
         }
         
-        internal static string SuicideWarning {
-            get {
-                return ResourceManager.GetString("SuicideWarning", resourceCulture);
-            }
-        }
-        
         internal static string DogNotFoundOrLost {
             get {
                 return ResourceManager.GetString("DogNotFoundOrLost", resourceCulture);
