@@ -4,21 +4,24 @@
   <p>A highly useable Steam Pic Posting Bot on Steam, dev based on ASF.</p>
 </div>
 
----
+<br>
 
-[![Github Issue](https://img.shields.io/github/issues/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/issues)
-[![Github Forks](https://img.shields.io/github/forks/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/fork)
-[![Github Stars](https://img.shields.io/github/stars/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot)
-[![GitHub License](https://img.shields.io/github/license/mashirosa/rin-asf-bot)](https://github.com/mashirosa/rin-asf-bot/blob/master/LICENSE)
+<p align="center">
+  <a href="https://github.com/mashirosa/rin-asf-bot/issues"><img src="https://img.shields.io/github/issues/mashirosa/rin-asf-bot" alt="Github Issue"></a>
+  <a href="https://github.com/mashirosa/rin-asf-bot/fork"><img src="https://img.shields.io/github/forks/mashirosa/rin-asf-bot" alt="Github Forks"></a>
+  <a href="https://github.com/mashirosa/rin-asf-bot"><img src="https://img.shields.io/github/stars/mashirosa/rin-asf-bot" alt="Github Stars"></a>
+  <a href="https://github.com/mashirosa/rin-asf-bot/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashirosa/rin-asf-bot" alt="GitHub License"></a>
+</p>
 
----
-
-![Alt](https://repobeats.axiom.co/api/embed/10309d9ebe0dad4128646852628802e7dfe79ea3.svg "Repobeats analytics image")
-
----
+<p align="center">
+  <img src="https://repobeats.axiom.co/api/embed/10309d9ebe0dad4128646852628802e7dfe79ea3.svg" alt="Repobeats analytics image">
+</p>
 
 ## Muti-Language Option
-[Simplified Chinese | 简体中文](./README_zhs.md)  
+[Simplified Chinese | 简体中文](./docs/README_zhs.md)  
+[Traditional Chinese | 繁體中文](./docs/README_zht.md)  
+[Japanese | 日本語](./docs/README_ja.md)  
+[German | Deutsch](./docs/README_de.md)  
 
 ## Description
 Rin bot is designed for giving steam gamers better experience, based [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm).

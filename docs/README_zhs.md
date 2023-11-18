@@ -17,25 +17,21 @@
 
 ---
 
-## 多语言选择
-[English | 英语](./README.md)  
+## 描述
+Rin bot 旨在为 Steam 玩家提供更好的体验，基于 [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm)。
 
-## 基本描述
-RinBot是设计为Steam提供更好的服务, 基于 [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm) 开发。
-
-RinBot的设计来源于汉字——凛，其并非有特殊含义。
+Rin 的名字来源于汉字「凛」，没有特殊含义。
 
 ---
 
-### 功能
-- 在Steam私聊或组聊天中获取二次元色图，或者是一点也不色的动漫图片。
-- 发送猫猫图和狗狗图。
-- 发送一句可能很有意义的一言。
-- 对链接进行警告。
+### 特性
+- 发布动漫图片，包括 Steam 群聊和私聊。
+- 发布可爱的猫咪或狗狗的图片。（猫咪图片的代码基于 ArchiSteamFarm 官方插件开发演示。）
+- 发送一句话，大抵是有意义的。
 
 ### 兼容性
-- RinBot应完全支持Windows、Linux或MacOS上的ArchiSteamFarm。
-- RinBot仅在ArchiSteamFarm的特定版本上可用，通常我们在发布新版本时会通知我们支持哪个版本，您应当确保ASF的版本至少不低于我们的测试版本。
+- RinBot 应该完全支持在 Windows、Linux 或 MacOS 上的 ArchiSteamFarm。
+- RinBot 仅在 ArchiSteamFarm 的特定版本上可用，通常我们在发布新版本时会通知我们支持的版本。您至少应使用我们推荐的 ASF 版本。
 
-## 如何使用 / 部署
-- 请详见我们的[WIKI](https://github.com/mashirosa/rin-asf-bot/wiki)页面.
+## 帮助和使用方法
+- 请访问我们的 Github [帮助页面](https://github.com/mashirosa/rin-asf-bot/wiki)。
