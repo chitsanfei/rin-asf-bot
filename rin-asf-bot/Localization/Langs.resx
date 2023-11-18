@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="DebugASFVersion" xml:space="preserve">
+        <value>5.4.9.3</value>
+    </data>
+    <data name="PluginVersion" xml:space="preserve">
+        <value>1.0.4</value>
+    </data>
+    <data name="LastEditedTime" xml:space="preserve">
+        <value>2023/8/22</value>
+    </data>
+    <data name="InitWarning" xml:space="preserve">
+        <value>RinBotPlugin: Rin现在正在进行加载过程，测试版本为</value>
+    </data>
+    <data name="InitProgramUnstableWarning" xml:space="preserve">
+        <value>RinBotPlugin: 这是一个不稳定的构建！</value>
+    </data>
+    <data name="OnRinLoaded" xml:space="preserve">
+        <value>RinBotPlugin: 欢迎您！Rin已经被ASF主程序侦测到并装载了，接下来需要进入加载过程！</value>
+    </data>
+    <data name="BotDisconnectedWarning" xml:space="preserve">
+        <value>RinBotPlugin: Rin掉线了哦！ASF主程序将尝试自动重连！</value>
+    </data>
+    <data name="HelpMenu" xml:space="preserve">
+        <value>/pre 欢迎您使用RinBot呢，茫茫人海相遇可是一种缘分～
+输入下列指令获得相应功能：
+!setu:获取一张色图
+!anime:获取一张相对正常的二次元图片
+!r18:获取限制的色图（已被限制仅高权限使用）
+!hito:获取一句一言
+!cat:获取随机的猫猫图（ASF官方例程）
+!dog:获取随机的狗狗图
+!abt:寻找关于这个bot的一切，包括到底是哪个憨批作者写出来的！</value>
+    </data>
+    <data name="SetuNotFound" xml:space="preserve">
+        <value>没有找到相应的内容或者内容呢丢失了！QAQ</value>
+    </data>
+    <data name="HitokotoNotFound" xml:space="preserve">
+        <value>好像一言走丢了哦！QAQ</value>
+    </data>
+    <data name="CatNotFoundOrLost" xml:space="preserve">
+        <value>不好！好像猫猫走丢了哦！QAQ</value>
+    </data>
+    <data name="NoPermissionWarning" xml:space="preserve">
+        <value>对不起！你的权限不够哟！:3</value>
+    </data>
+    <data name="OutOfOrderList" xml:space="preserve">
+        <value>好像没有对应的指令?输入「!h」可以查看可以使用的指令。</value>
+    </data>
+    <data name="About" xml:space="preserve">
+        <value>/code Github开源项目链接：https://github.com/mashirosa/rin-asf-bot</value>
+    </data>
+    <data name="WebLinkWarning" xml:space="preserve">
+        <value>Rin侦测到可能的一条链接哦！请务必警惕陌生链接，网页千万条安全第一条，务必不要输入自己的账号密码，泄漏财产信息哦！</value>
+    </data>
+    <data name="SuicideWarning" xml:space="preserve">
+        <value>请不要放弃！人生漫漫，总有希望！
+世界并不完美，但请相信世间会有在乎您的人！ :bbtcat:
+若您需要帮助，可联系本组的组长，或立即向相关机构求助！</value>
+    </data>
+    <data name="DogNotFoundOrLost" xml:space="preserve">
+        <value>不好！好像狗狗走丢了哦！QAQ</value>
+    </data>
+    <data name="AnimePicNotFound" xml:space="preserve">
+        <value>没有获取到二次元图片，或中途出现了意外。</value>
+    </data>
+</root>
