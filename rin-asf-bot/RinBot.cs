@@ -69,7 +69,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			{
 				if (userLimit.count >= maxRequestsPerMinute)
 				{
-					return "You have exceeded the maximum number of requests per minute. Please wait a moment before trying again.";
+					return Langs.RateLimitWarning;
 				}
 				userRequestLimits[steamID] = (userLimit.count + 1, DateTime.Now);
 			}
