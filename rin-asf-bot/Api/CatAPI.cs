@@ -18,7 +18,7 @@ internal static class CatAPI {
 
 		Uri request = new($"{URL}/v1/images/search");
 
-		ObjectResponse<ImmutableList<MeowResponse>>? response = await webBrowser.UrlGetToJsonObject<ImmutableList<MeowResponse>>(request, cancellationToken: cancellationToken).ConfigureAwait(false);
+		ObjectResponse<ImmutableList<MeowResponse>>? response = await webBrowser.UrlGetToJsonObject<ImmutableList<MeowResponse>>(request).ConfigureAwait(false);
 
 		return response?.Content?.FirstOrDefault()?.URL;
 	}
