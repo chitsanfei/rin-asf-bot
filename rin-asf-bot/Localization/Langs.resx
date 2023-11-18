@@ -79,4 +79,7 @@
     <data name="AnimePicNotFound" xml:space="preserve">
         <value>没有获取到二次元图片，或中途出现了意外。</value>
     </data>
+    <data name="RateLimitWarning" xml:space="preserve">
+        <value>您已经触发请求上限，请休息一下！</value>
+    </data>
 </root>

@@ -146,5 +146,11 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
                 return ResourceManager.GetString("AnimePicNotFound", resourceCulture);
             }
         }
+        
+        internal static string RateLimitWarning {
+            get {
+                return ResourceManager.GetString("RateLimitWarning", resourceCulture);
+            }
+        }
     }
 }
