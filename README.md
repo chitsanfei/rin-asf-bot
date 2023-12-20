@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/MashiroSA/rin-asf-bot/master/assets/logo.png" height="200">
+  <img src="https://raw.githubusercontent.com/MashiroSA/rin-asf-bot/master/assets/banner.png" height="200">
   <h1>MashiroSA/RinBot</h1>
   <p>A highly useable Steam Pic Posting Bot on Steam, dev based on ASF.</p>
 </div>
