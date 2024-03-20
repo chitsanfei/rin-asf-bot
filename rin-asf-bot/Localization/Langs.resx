@@ -18,25 +18,25 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="DebugASFVersion" xml:space="preserve">
+    <data name="VersionASF" xml:space="preserve">
         <value>5.5.2.3</value>
     </data>
-    <data name="PluginVersion" xml:space="preserve">
+    <data name="VersionPlugin" xml:space="preserve">
         <value>1.0.6</value>
     </data>
-    <data name="LastEditedTime" xml:space="preserve">
+    <data name="VersionDate" xml:space="preserve">
         <value>2024/2/4</value>
     </data>
-    <data name="InitWarning" xml:space="preserve">
+    <data name="InitNotice" xml:space="preserve">
         <value>RinBotPlugin: Rin现在正在进行加载过程，测试版本为</value>
     </data>
-    <data name="InitProgramUnstableWarning" xml:space="preserve">
+    <data name="InitProgramUnstable" xml:space="preserve">
         <value>RinBotPlugin: 这是一个不稳定的构建！</value>
     </data>
-    <data name="OnRinLoaded" xml:space="preserve">
+    <data name="InitRinLoaded" xml:space="preserve">
         <value>RinBotPlugin: 欢迎您！Rin已经被ASF主程序侦测到并装载了，接下来需要进入加载过程！</value>
     </data>
-    <data name="BotDisconnectedWarning" xml:space="preserve">
+    <data name="WarningBotDisconnected" xml:space="preserve">
         <value>RinBotPlugin: Rin掉线了哦！ASF主程序将尝试自动重连！</value>
     </data>
     <data name="HelpMenu" xml:space="preserve">
@@ -50,19 +50,19 @@
 !dog:获取随机的狗狗图
 !abt:寻找关于这个bot的一切，包括到底是哪个憨批作者写出来的！</value>
     </data>
-    <data name="SetuNotFound" xml:space="preserve">
+    <data name="WarningSetuLost" xml:space="preserve">
         <value>没有找到相应的内容或者内容呢丢失了！QAQ</value>
     </data>
-    <data name="HitokotoNotFound" xml:space="preserve">
+    <data name="WarningHitokotoLost" xml:space="preserve">
         <value>好像一言走丢了哦！QAQ</value>
     </data>
-    <data name="CatNotFoundOrLost" xml:space="preserve">
+    <data name="WarningCatLost" xml:space="preserve">
         <value>不好！好像猫猫走丢了哦！QAQ</value>
     </data>
-    <data name="NoPermissionWarning" xml:space="preserve">
+    <data name="WarningNoPermission" xml:space="preserve">
         <value>对不起！你的权限不够哟！:3</value>
     </data>
-    <data name="OutOfOrderList" xml:space="preserve">
+    <data name="WarningNoCommand" xml:space="preserve">
         <value>好像没有对应的指令?输入「!h」可以查看可以使用的指令。</value>
     </data>
     <data name="About" xml:space="preserve">
@@ -70,16 +70,16 @@
 在您使用该开源Bot时，请必须知悉本Bot并不收集任何用户信息，本Bot并未储存任何图片，本Bot使用的所有API均为第三方，作者不能控制或审计相关内容，本Bot仅供技术交流。请务必遵守您所在的相关法律使用。
 任何人员可以通过Github审查相关代码，并提出意见和改进。</value>
     </data>
-    <data name="WebLinkWarning" xml:space="preserve">
+    <data name="WarningWebLink" xml:space="preserve">
         <value>Rin侦测到可能的一条链接哦！诈骗多发，请务必警惕陌生链接，网页千万条安全第一条。不要输入自己的任何账号密码，泄漏财产信息哦！！！</value>
     </data>
-    <data name="DogNotFoundOrLost" xml:space="preserve">
+    <data name="WarningDogLost" xml:space="preserve">
         <value>不好！好像狗狗走丢了哦！QAQ</value>
     </data>
-    <data name="AnimePicNotFound" xml:space="preserve">
+    <data name="WarningAnimePicLost" xml:space="preserve">
         <value>没有获取到二次元图片，或中途出现了意外。</value>
     </data>
-    <data name="RateLimitWarning" xml:space="preserve">
+    <data name="WarningRateLimit" xml:space="preserve">
         <value>您已经触发请求上限，请休息一下！</value>
     </data>
 </root>

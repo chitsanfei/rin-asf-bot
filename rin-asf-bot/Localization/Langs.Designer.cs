@@ -28,7 +28,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization.Langs", typeof(Langs).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("ArchiSteamFarm.CustomPlugins.Rin.Localization.Langs", typeof(Langs).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -45,45 +45,45 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
             }
         }
         
-        internal static string DebugASFVersion {
+        internal static string VersionASF {
             get {
-                return ResourceManager.GetString("DebugASFVersion", resourceCulture);
+                return ResourceManager.GetString("VersionASF", resourceCulture);
             }
         }
         
-        internal static string PluginVersion {
+        internal static string VersionPlugin {
             get {
-                return ResourceManager.GetString("PluginVersion", resourceCulture);
+                return ResourceManager.GetString("VersionPlugin", resourceCulture);
             }
         }
         
-        internal static string LastEditedTime {
+        internal static string VersionDate {
             get {
-                return ResourceManager.GetString("LastEditedTime", resourceCulture);
+                return ResourceManager.GetString("VersionDate", resourceCulture);
             }
         }
         
-        internal static string InitWarning {
+        internal static string InitNotice {
             get {
-                return ResourceManager.GetString("InitWarning", resourceCulture);
+                return ResourceManager.GetString("InitNotice", resourceCulture);
             }
         }
         
-        internal static string InitProgramUnstableWarning {
+        internal static string InitProgramUnstable {
             get {
-                return ResourceManager.GetString("InitProgramUnstableWarning", resourceCulture);
+                return ResourceManager.GetString("InitProgramUnstable", resourceCulture);
             }
         }
         
-        internal static string OnRinLoaded {
+        internal static string InitRinLoaded {
             get {
-                return ResourceManager.GetString("OnRinLoaded", resourceCulture);
+                return ResourceManager.GetString("InitRinLoaded", resourceCulture);
             }
         }
         
-        internal static string BotDisconnectedWarning {
+        internal static string WarningBotDisconnected {
             get {
-                return ResourceManager.GetString("BotDisconnectedWarning", resourceCulture);
+                return ResourceManager.GetString("WarningBotDisconnected", resourceCulture);
             }
         }
         
@@ -93,33 +93,33 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
             }
         }
         
-        internal static string SetuNotFound {
+        internal static string WarningSetuLost {
             get {
-                return ResourceManager.GetString("SetuNotFound", resourceCulture);
+                return ResourceManager.GetString("WarningSetuLost", resourceCulture);
             }
         }
         
-        internal static string HitokotoNotFound {
+        internal static string WarningHitokotoLost {
             get {
-                return ResourceManager.GetString("HitokotoNotFound", resourceCulture);
+                return ResourceManager.GetString("WarningHitokotoLost", resourceCulture);
             }
         }
         
-        internal static string CatNotFoundOrLost {
+        internal static string WarningCatLost {
             get {
-                return ResourceManager.GetString("CatNotFoundOrLost", resourceCulture);
+                return ResourceManager.GetString("WarningCatLost", resourceCulture);
             }
         }
         
-        internal static string NoPermissionWarning {
+        internal static string WarningNoPermission {
             get {
-                return ResourceManager.GetString("NoPermissionWarning", resourceCulture);
+                return ResourceManager.GetString("WarningNoPermission", resourceCulture);
             }
         }
         
-        internal static string OutOfOrderList {
+        internal static string WarningNoCommand {
             get {
-                return ResourceManager.GetString("OutOfOrderList", resourceCulture);
+                return ResourceManager.GetString("WarningNoCommand", resourceCulture);
             }
         }
         
@@ -129,27 +129,27 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
             }
         }
         
-        internal static string WebLinkWarning {
+        internal static string WarningWebLink {
             get {
-                return ResourceManager.GetString("WebLinkWarning", resourceCulture);
+                return ResourceManager.GetString("WarningWebLink", resourceCulture);
             }
         }
         
-        internal static string DogNotFoundOrLost {
+        internal static string WarningDogLost {
             get {
-                return ResourceManager.GetString("DogNotFoundOrLost", resourceCulture);
+                return ResourceManager.GetString("WarningDogLost", resourceCulture);
             }
         }
         
-        internal static string AnimePicNotFound {
+        internal static string WarningAnimePicLost {
             get {
-                return ResourceManager.GetString("AnimePicNotFound", resourceCulture);
+                return ResourceManager.GetString("WarningAnimePicLost", resourceCulture);
             }
         }
         
-        internal static string RateLimitWarning {
+        internal static string WarningRateLimit {
             get {
-                return ResourceManager.GetString("RateLimitWarning", resourceCulture);
+                return ResourceManager.GetString("WarningRateLimit", resourceCulture);
             }
         }
     }

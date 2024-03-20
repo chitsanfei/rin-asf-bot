@@ -50,7 +50,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 
 		public Task OnLoaded()
 		{
-			ASF.ArchiLogger.LogGenericWarning(Langs.OnRinLoaded);
+			ASF.ArchiLogger.LogGenericWarning(Langs.InitRinLoaded);
 			return Task.CompletedTask;
 		}
 
@@ -66,8 +66,8 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 
 		public Task OnBotInit(Steam.Bot bot)
 		{
-			ASF.ArchiLogger.LogGenericWarning(Langs.InitWarning + Langs.DebugASFVersion);
-			ASF.ArchiLogger.LogGenericWarning(Langs.InitProgramUnstableWarning);
+			ASF.ArchiLogger.LogGenericWarning(Langs.InitNotice + Langs.VersionASF);
+			ASF.ArchiLogger.LogGenericWarning(Langs.InitProgramUnstable);
 			return Task.CompletedTask;
 		}
 		
@@ -80,7 +80,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			{
 				if (userLimit.count >= maxRequestsPerMinute)
 				{
-					return Langs.RateLimitWarning;
+					return Langs.WarningRateLimit;
 				}
 				userRequestLimits[steamID] = (userLimit.count + 1, DateTime.Now);
 			}
@@ -104,31 +104,31 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			switch (args[0])
 			{
 				case { } arg when string.Equals(arg, "SETU", StringComparison.OrdinalIgnoreCase):
-					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuURL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound).ConfigureAwait(false);
+					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuURL(bot.ArchiWebHandler.WebBrowser), Langs.WarningSetuLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase) && access >= EAccess.Operator:
-					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound).ConfigureAwait(false);
+					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser), Langs.WarningSetuLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase):
-					return Langs.NoPermissionWarning;
+					return Langs.WarningNoPermission;
 				case { } arg when string.Equals(arg, "ANIME", StringComparison.OrdinalIgnoreCase):
-					return await getUrlOrErrorMessage(AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser), Langs.AnimePicNotFound).ConfigureAwait(false);
+					return await getUrlOrErrorMessage(AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser), Langs.WarningAnimePicLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "HITO", StringComparison.OrdinalIgnoreCase):
-					return await getUrlOrErrorMessage(HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser), Langs.HitokotoNotFound).ConfigureAwait(false);
+					return await getUrlOrErrorMessage(HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser), Langs.WarningHitokotoLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "CAT", StringComparison.OrdinalIgnoreCase):
-					return await getUriOrErrorMessage(CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser), Langs.CatNotFoundOrLost).ConfigureAwait(false);
+					return await getUriOrErrorMessage(CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser), Langs.WarningCatLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "DOG", StringComparison.OrdinalIgnoreCase):
-					return await getUriOrErrorMessage(DogAPI.GetRandomDogURL(bot.ArchiWebHandler.WebBrowser), Langs.DogNotFoundOrLost).ConfigureAwait(false);
+					return await getUriOrErrorMessage(DogAPI.GetRandomDogURL(bot.ArchiWebHandler.WebBrowser), Langs.WarningDogLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "H", StringComparison.OrdinalIgnoreCase):
 					return Langs.HelpMenu;
 				case { } arg when string.Equals(arg, "ABT", StringComparison.OrdinalIgnoreCase):
 					return Langs.About;
 				default:
-					return Langs.OutOfOrderList;
+					return Langs.WarningNoCommand;
 			}
 		}
 
 		public Task OnBotDisconnected(Steam.Bot bot, EResult reason)
 		{
-			ASF.ArchiLogger.LogGenericWarning(Langs.BotDisconnectedWarning);
+			ASF.ArchiLogger.LogGenericWarning(Langs.WarningBotDisconnected);
 			return Task.CompletedTask;
 		}
 		
@@ -159,7 +159,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 				};
 				if (webDomainList.Any(s => message.Contains(s, StringComparison.OrdinalIgnoreCase)))
 				{
-					string reply = string.Format("/pre 🤔 -> SteamUser64ID:{0}\n{1}", steamID, Langs.WebLinkWarning);
+					string reply = string.Format("/pre 🤔 -> SteamUser64ID:{0}\n{1}", steamID, Langs.WarningWebLink);
 					return Task.FromResult((string?)reply);
 				}
 			}
