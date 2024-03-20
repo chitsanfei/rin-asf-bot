@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Composition;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ArchiSteamFarm.Core;
 using ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization;
@@ -9,7 +11,6 @@ using ArchiSteamFarm.Plugins.Interfaces;
 using ArchiSteamFarm.Steam;
 using ArchiSteamFarm.Steam.Data;
 using ArchiSteamFarm.CustomPlugins.Rin.Api;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SteamKit2;
 
@@ -23,7 +24,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 
 		public Version Version => typeof(RinBot).Assembly.GetName().Version ?? throw new InvalidOperationException(nameof(Version));
 
-		[JsonProperty]
+		[JsonInclude]
 		public bool CustomIsEnabledField { get; private set; } = true;
 
 		private Dictionary<ulong, (int count, DateTime lastRequestTime)> userRequestLimits = new Dictionary<ulong, (int, DateTime)>();
@@ -51,6 +52,16 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 		{
 			ASF.ArchiLogger.LogGenericWarning(Langs.OnRinLoaded);
 			return Task.CompletedTask;
+		}
+
+		public Task OnBotInitModules(Steam.Bot bot, IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task OnASFInit(IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null)
+		{
+			throw new NotImplementedException();
 		}
 
 		public Task OnBotInit(Steam.Bot bot)
