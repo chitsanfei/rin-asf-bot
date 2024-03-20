@@ -103,23 +103,23 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 
 			switch (args[0])
 			{
-				case string arg when string.Equals(arg, "SETU", StringComparison.OrdinalIgnoreCase):
-					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuURL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound);
-				case string arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase) && access >= EAccess.Operator:
-					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound);
-				case string arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase):
+				case { } arg when string.Equals(arg, "SETU", StringComparison.OrdinalIgnoreCase):
+					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuURL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound).ConfigureAwait(false);
+				case { } arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase) && access >= EAccess.Operator:
+					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18URL(bot.ArchiWebHandler.WebBrowser), Langs.SetuNotFound).ConfigureAwait(false);
+				case { } arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase):
 					return Langs.NoPermissionWarning;
-				case string arg when string.Equals(arg, "ANIME", StringComparison.OrdinalIgnoreCase):
-					return await getUrlOrErrorMessage(AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser), Langs.AnimePicNotFound);
-				case string arg when string.Equals(arg, "HITO", StringComparison.OrdinalIgnoreCase):
-					return await getUrlOrErrorMessage(HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser), Langs.HitokotoNotFound);
-				case string arg when string.Equals(arg, "CAT", StringComparison.OrdinalIgnoreCase):
-					return await getUriOrErrorMessage(CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser), Langs.CatNotFoundOrLost);
-				case string arg when string.Equals(arg, "DOG", StringComparison.OrdinalIgnoreCase):
-					return await getUriOrErrorMessage(DogAPI.GetRandomDogURL(bot.ArchiWebHandler.WebBrowser), Langs.DogNotFoundOrLost);
-				case string arg when string.Equals(arg, "H", StringComparison.OrdinalIgnoreCase):
+				case { } arg when string.Equals(arg, "ANIME", StringComparison.OrdinalIgnoreCase):
+					return await getUrlOrErrorMessage(AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser), Langs.AnimePicNotFound).ConfigureAwait(false);
+				case { } arg when string.Equals(arg, "HITO", StringComparison.OrdinalIgnoreCase):
+					return await getUrlOrErrorMessage(HitokotoAPI.GetHitokotoText(bot.ArchiWebHandler.WebBrowser), Langs.HitokotoNotFound).ConfigureAwait(false);
+				case { } arg when string.Equals(arg, "CAT", StringComparison.OrdinalIgnoreCase):
+					return await getUriOrErrorMessage(CatAPI.GetRandomCatURL(bot.ArchiWebHandler.WebBrowser), Langs.CatNotFoundOrLost).ConfigureAwait(false);
+				case { } arg when string.Equals(arg, "DOG", StringComparison.OrdinalIgnoreCase):
+					return await getUriOrErrorMessage(DogAPI.GetRandomDogURL(bot.ArchiWebHandler.WebBrowser), Langs.DogNotFoundOrLost).ConfigureAwait(false);
+				case { } arg when string.Equals(arg, "H", StringComparison.OrdinalIgnoreCase):
 					return Langs.HelpMenu;
-				case string arg when string.Equals(arg, "ABT", StringComparison.OrdinalIgnoreCase):
+				case { } arg when string.Equals(arg, "ABT", StringComparison.OrdinalIgnoreCase):
 					return Langs.About;
 				default:
 					return Langs.OutOfOrderList;
