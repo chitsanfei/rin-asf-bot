@@ -99,12 +99,6 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
             }
         }
         
-        internal static string WarningHitokotoLost {
-            get {
-                return ResourceManager.GetString("WarningHitokotoLost", resourceCulture);
-            }
-        }
-        
         internal static string WarningCatLost {
             get {
                 return ResourceManager.GetString("WarningCatLost", resourceCulture);
@@ -132,12 +126,6 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         internal static string WarningWebLink {
             get {
                 return ResourceManager.GetString("WarningWebLink", resourceCulture);
-            }
-        }
-        
-        internal static string WarningDogLost {
-            get {
-                return ResourceManager.GetString("WarningDogLost", resourceCulture);
             }
         }
         

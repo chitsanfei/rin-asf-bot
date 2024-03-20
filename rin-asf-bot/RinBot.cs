@@ -11,7 +11,6 @@ using ArchiSteamFarm.Plugins.Interfaces;
 using ArchiSteamFarm.Steam;
 using ArchiSteamFarm.Steam.Data;
 using ArchiSteamFarm.CustomPlugins.Rin.Api;
-using Newtonsoft.Json.Linq;
 using SteamKit2;
 
 namespace ArchiSteamFarm.CustomPlugins.Rin
@@ -27,41 +26,28 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 		[JsonInclude]
 		public bool CustomIsEnabledField { get; private set; } = true;
 
-		private Dictionary<ulong, (int count, DateTime lastRequestTime)> userRequestLimits = new Dictionary<ulong, (int, DateTime)>();
+		private readonly Dictionary<ulong, (int count, DateTime lastRequestTime)> UserRequestLimits = new Dictionary<ulong, (int, DateTime)>();
 
-		public Task OnASFInit(IReadOnlyDictionary<string, JToken>? additionalConfigProperties = null)
+		public Task OnASFInit(IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null) 
 		{
-			if (additionalConfigProperties == null)
-			{
+			if (additionalConfigProperties == null) {
 				return Task.CompletedTask;
 			}
-
-			foreach (KeyValuePair<string, JToken> configProperty in additionalConfigProperties)
-			{
-				switch (configProperty.Key)
-				{
-					case nameof(RinBot) + "TestProperty" when configProperty.Value.Type == JTokenType.Boolean:
-						bool exampleBooleanValue = configProperty.Value.Value<bool>();
-						break;
-				}
-			}
+			
 			return Task.CompletedTask;
 		}
-
+		
 		public Task OnLoaded()
 		{
 			ASF.ArchiLogger.LogGenericWarning(Langs.InitRinLoaded);
 			return Task.CompletedTask;
 		}
 
-		public Task OnBotInitModules(Steam.Bot bot, IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null)
+		
+		public async Task OnBotInitModules(Steam.Bot bot, IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null)
 		{
-			throw new NotImplementedException();
-		}
-
-		public Task OnASFInit(IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null)
-		{
-			throw new NotImplementedException();
+			bot.ArchiLogger.LogGenericInfo("Pausing this bot as asked from the plugin");
+			await bot.Actions.Pause(true).ConfigureAwait(false);
 		}
 
 		public Task OnBotInit(Steam.Bot bot)
@@ -73,20 +59,20 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 		
 		public Task OnBotLoggedOn(Steam.Bot bot) => Task.CompletedTask;
 		
-		public async Task<string?> OnBotCommand(Steam.Bot bot, EAccess access, string message, string[] args, ulong steamID = 0)
+		public async Task<string?> OnBotCommand(Steam.Bot bot, EAccess access, string message, string[] args, ulong steamId = 0)
 		{
 			const int maxRequestsPerMinute = 30;
-			if (userRequestLimits.TryGetValue(steamID, out var userLimit) && (DateTime.Now - userLimit.lastRequestTime).TotalMinutes < 1)
+			if (UserRequestLimits.TryGetValue(steamId, out var userLimit) && (DateTime.Now - userLimit.lastRequestTime).TotalMinutes < 1)
 			{
 				if (userLimit.count >= maxRequestsPerMinute)
 				{
 					return Langs.WarningRateLimit;
 				}
-				userRequestLimits[steamID] = (userLimit.count + 1, DateTime.Now);
+				UserRequestLimits[steamId] = (userLimit.count + 1, DateTime.Now);
 			}
 			else
 			{
-				userRequestLimits[steamID] = (1, DateTime.Now);
+				UserRequestLimits[steamId] = (1, DateTime.Now);
 			}
 
 			Func<Task<string?>, string, Task<string?>> getUrlOrErrorMessage = async (getUrlTask, errorMessage) =>
@@ -108,15 +94,15 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 				case { } arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase) && access >= EAccess.Operator:
 					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18Url(bot.ArchiWebHandler.WebBrowser), Langs.WarningSetuLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "R18", StringComparison.OrdinalIgnoreCase):
+					if (Utils.CheckFileExists())
+					{
+						return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18Url(bot.ArchiWebHandler.WebBrowser), Langs.WarningSetuLost).ConfigureAwait(false);
+					}
 					return Langs.WarningNoPermission;
 				case { } arg when string.Equals(arg, "ANIME", StringComparison.OrdinalIgnoreCase):
 					return await getUrlOrErrorMessage(AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser), Langs.WarningAnimePicLost).ConfigureAwait(false);
-				case { } arg when string.Equals(arg, "HITO", StringComparison.OrdinalIgnoreCase):
-					return await getUrlOrErrorMessage(HitokotoApi.GetHitokotoText(bot.ArchiWebHandler.WebBrowser), Langs.WarningHitokotoLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "CAT", StringComparison.OrdinalIgnoreCase):
 					return await getUriOrErrorMessage(CatAPI.GetRandomCatUrl(bot.ArchiWebHandler.WebBrowser), Langs.WarningCatLost).ConfigureAwait(false);
-				case { } arg when string.Equals(arg, "DOG", StringComparison.OrdinalIgnoreCase):
-					return await getUriOrErrorMessage(DogAPI.GetRandomDogUrl(bot.ArchiWebHandler.WebBrowser), Langs.WarningDogLost).ConfigureAwait(false);
 				case { } arg when string.Equals(arg, "H", StringComparison.OrdinalIgnoreCase):
 					return Langs.HelpMenu;
 				case { } arg when string.Equals(arg, "ABT", StringComparison.OrdinalIgnoreCase):
@@ -131,20 +117,15 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 			ASF.ArchiLogger.LogGenericWarning(Langs.WarningBotDisconnected);
 			return Task.CompletedTask;
 		}
-		
-		public async Task OnBotInitModules(Steam.Bot bot, IReadOnlyDictionary<string, JToken>? additionalConfigProperties = null)
-		{
-			await bot.Actions.Pause(true).ConfigureAwait(false);
-		}
 
-		public Task<string?> OnBotMessage(Steam.Bot bot, ulong steamID, string message)
+		public Task<string?> OnBotMessage(Steam.Bot bot, ulong steamId, string message)
 		{
 			if (Steam.Bot.BotsReadOnly == null)
 			{
 				throw new InvalidOperationException(nameof(Steam.Bot.BotsReadOnly));
 			}
 
-			if (Steam.Bot.BotsReadOnly.Values.Any(existingBot => existingBot.SteamID == steamID))
+			if (Steam.Bot.BotsReadOnly.Values.Any(existingBot => existingBot.SteamID == steamId))
 			{
 				return Task.FromResult<string?>(null);
 			}
@@ -159,7 +140,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 				};
 				if (webDomainList.Any(s => message.Contains(s, StringComparison.OrdinalIgnoreCase)))
 				{
-					string reply = string.Format("/pre 🤔 -> SteamUser64ID:{0}\n{1}", steamID, Langs.WarningWebLink);
+					string reply = $"/pre 🤔 -> SteamUser64ID:{steamId}\n{Langs.WarningWebLink}";
 					return Task.FromResult((string?)reply);
 				}
 			}
@@ -168,7 +149,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin
 		}
 
 		public Task<bool> OnBotTradeOffer(Steam.Bot bot, TradeOffer tradeOffer) => Task.FromResult(false);
-		public Task<bool> OnBotFriendRequest(Steam.Bot bot, ulong steamID) => Task.FromResult(false);
+		public Task<bool> OnBotFriendRequest(Steam.Bot bot, ulong steamId) => Task.FromResult(false);
 		public Task OnBotDestroy(Steam.Bot bot) => Task.CompletedTask;
 
 	}

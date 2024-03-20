@@ -19,13 +19,13 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="VersionASF" xml:space="preserve">
-        <value>5.5.2.3</value>
+        <value>6.0.0.3</value>
     </data>
     <data name="VersionPlugin" xml:space="preserve">
-        <value>1.0.6</value>
+        <value>1.0.7</value>
     </data>
     <data name="VersionDate" xml:space="preserve">
-        <value>2024/2/4</value>
+        <value>2024/3/20</value>
     </data>
     <data name="InitNotice" xml:space="preserve">
         <value>RinBotPlugin: Rin现在正在进行加载过程，测试版本为</value>
@@ -43,18 +43,13 @@
         <value>/pre 欢迎您使用RinBot呢，茫茫人海相遇可是一种缘分～
 输入下列指令获得相应功能：
 !setu:获取一张色图
+!r18:获取限制的色图
 !anime:获取一张相对正常的二次元图片
-!r18:获取限制的色图（已被限制仅高权限使用）
-!hito:获取一句一言
 !cat:获取随机的猫猫图（ASF官方例程）
-!dog:获取随机的狗狗图
 !abt:寻找关于这个bot的一切，包括到底是哪个憨批作者写出来的！</value>
     </data>
     <data name="WarningSetuLost" xml:space="preserve">
         <value>没有找到相应的内容或者内容呢丢失了！QAQ</value>
-    </data>
-    <data name="WarningHitokotoLost" xml:space="preserve">
-        <value>好像一言走丢了哦！QAQ</value>
     </data>
     <data name="WarningCatLost" xml:space="preserve">
         <value>不好！好像猫猫走丢了哦！QAQ</value>
@@ -72,9 +67,6 @@
     </data>
     <data name="WarningWebLink" xml:space="preserve">
         <value>Rin侦测到可能的一条链接哦！诈骗多发，请务必警惕陌生链接，网页千万条安全第一条。不要输入自己的任何账号密码，泄漏财产信息哦！！！</value>
-    </data>
-    <data name="WarningDogLost" xml:space="preserve">
-        <value>不好！好像狗狗走丢了哦！QAQ</value>
     </data>
     <data name="WarningAnimePicLost" xml:space="preserve">
         <value>没有获取到二次元图片，或中途出现了意外。</value>

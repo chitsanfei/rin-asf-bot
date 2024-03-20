@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using ArchiSteamFarm;
-using Newtonsoft.Json;
 using ArchiSteamFarm.Web;
 using ArchiSteamFarm.Web.Responses;
 

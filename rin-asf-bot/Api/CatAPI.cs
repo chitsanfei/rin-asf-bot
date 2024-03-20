@@ -2,11 +2,11 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using ArchiSteamFarm.Web;
 using ArchiSteamFarm.Web.Responses;
-using Newtonsoft.Json;
 
 namespace ArchiSteamFarm.CustomPlugins.Rin.Api;
 
@@ -24,10 +24,22 @@ internal static class CatAPI {
 	}
 }
 
+// [SuppressMessage("ReSharper", "ClassCannotBeInstantiated")]
+// internal sealed class MeowResponse {
+// 	[JsonProperty("url", Required = Required.Always)]
+// 	internal readonly Uri Url = null!;
+//
+// 	[JsonConstructor]
+// 	private MeowResponse() { }
+// }
+
+#pragma warning disable CA1812 // False positive, the class is used during json deserialization
 [SuppressMessage("ReSharper", "ClassCannotBeInstantiated")]
 internal sealed class MeowResponse {
-	[JsonProperty("url", Required = Required.Always)]
-	internal readonly Uri Url = null!;
+	[JsonInclude]
+	[JsonPropertyName("url")]
+	[JsonRequired]
+	internal Uri Url { get; private init; } = null!;
 
 	[JsonConstructor]
 	private MeowResponse() { }
