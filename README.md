@@ -18,13 +18,13 @@
 </p>
 
 ## Muti-Language Option
-[Simplified Chinese | 简体中文](./docs/README_zhs.md)  
-[Traditional Chinese | 繁體中文](./docs/README_zht.md)  
-[Japanese | 日本語](./docs/README_ja.md)  
-[German | Deutsch](./docs/README_de.md)  
+[Simplified Chinese | 简体中文](./assets/docs/README_zhs.md)  
+[Traditional Chinese | 繁體中文](./assets/docs/README_zht.md)  
+[Japanese | 日本語](./assets/docs/README_ja.md)  
+[German | Deutsch](./assets/docs/README_de.md)  
 
 ## Description
-Rin bot is designed for giving steam gamers better experience, based [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm).
+Rin is designed for giving steam gamers better experience, based [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm).
 
 Rin is named from Chinese character 「凛」, no special meaning.
 
@@ -32,12 +32,16 @@ Rin is named from Chinese character 「凛」, no special meaning.
 
 ### Features
 - Post anime pictures, including steam group chat and private chat.
-- Post cute cat pictures or dog pictures. (Code for cat picture bases on ArchiSteamFarm official plugin develop demo.)
-- Send hitokoto, which is probably meaningful.
+- Post cute cats.
 
 ### Compatibility
 - RinBot should fully support to ArchiSteamFarm on Windows or Linux or MacOS.
 - RinBot is available only on specific version of ArchiSteamFarm, usually we notify which version we support when we make a new release. You shall use proper version of ASF at least no lower than we recommand one.
+
+### Manual Compliation
+```
+dotnet build -c Release
+```
 
 ## Help & How to Use
 - Please visit our Github [Wiki Page](https://github.com/chitsanfei/rin-asf-bot/wiki).
