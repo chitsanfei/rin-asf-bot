@@ -9,17 +9,17 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api;
 
 internal static class DogAPI
 {
-    private const string URL = "https://dog.ceo/api/breeds/image/random";
+    private const string Url = "https://dog.ceo/api/breeds/image/random";
 
-    internal static async Task<Uri?> GetRandomDogURL(WebBrowser webBrowser)
+    internal static async Task<Uri?> GetRandomDogUrl(WebBrowser webBrowser)
     {
         ArgumentNullException.ThrowIfNull(webBrowser);
 
-        Uri request = new($"{URL}");
+        Uri request = new($"{Url}");
 
         ObjectResponse<DoggeResponse>? response = await webBrowser.UrlGetToJsonObject<DoggeResponse>(request).ConfigureAwait(false);
 
-        return response?.Content?.URL;
+        return response?.Content?.Url;
     }
 }
 
@@ -27,7 +27,7 @@ internal static class DogAPI
 internal sealed class DoggeResponse
 {
     [JsonProperty("message", Required = Required.Always)]
-    internal readonly Uri URL = null!;
+    internal readonly Uri Url = null!;
 
     [JsonConstructor]
     private DoggeResponse() { }

@@ -9,7 +9,7 @@ using ArchiSteamFarm.Web.Responses;
 
 namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 {
-	internal static class HitokotoAPI
+	internal static class HitokotoApi
 	{
 		/// <summary>
 		/// URL to the API. hitokoto.cn. 
@@ -38,31 +38,12 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 				return null;
 			}
 
-			if (string.IsNullOrEmpty(response.Content.Hitokoto))
+			if (string.IsNullOrEmpty(response.Content?.Hitokoto))
 			{
 				throw new InvalidOperationException(nameof(response.Content.Hitokoto));
 			}
 
 			return response.Content.Hitokoto;
-		}
-		
-		/// <summary>
-		/// The response of the API.
-		/// </summary>
-		private class HitokotoJson
-		{
-			public string id { get; set; }
-			public string uuid { get; set; }
-			public string hitokoto { get; set; }
-			public string type { get; set; }
-			public string from { get; set; }
-			public string from_who { get; set; }
-			public string creator { get; set; }
-			public int creator_uid { get; set; }
-			public int reviewer { get; set; }
-			public string commit_from { get; set; }
-			public string created_at { get; set; }
-			public int length { get; set; }
 		}
 
 
@@ -85,22 +66,22 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 			internal readonly string From;
 
 			[JsonProperty(PropertyName = "from_who", Required = Required.AllowNull)]
-			internal readonly string From_who;
+			internal readonly string FromWho;
 
 			[JsonProperty(PropertyName = "creator", Required = Required.Always)]
 			internal readonly string Creator;
 
 			[JsonProperty(PropertyName = "creator_uid", Required = Required.Always)]
-			internal readonly int Creator_uid;
+			internal readonly int CreatorUid;
 
 			[JsonProperty(PropertyName = "reviewer", Required = Required.Always)]
 			internal readonly int Reviewer;
 
 			[JsonProperty(PropertyName = "commit_from", Required = Required.Always)]
-			internal readonly string Commit_from;
+			internal readonly string CommitFrom;
 
 			[JsonProperty(PropertyName = "created_at", Required = Required.Always)]
-			internal readonly string Commit_at;
+			internal readonly string CommitAt;
 
 			[JsonProperty(PropertyName = "length", Required = Required.Always)]
 			internal readonly int Length;

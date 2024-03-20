@@ -14,7 +14,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 		/// <summary>
         /// Picture API. For lolicon.app website.
         /// </summary>
-		private const string URL = "https://api.lolicon.app/setu/v2";
+		private const string Url = "https://api.lolicon.app/setu/v2";
 
 		/// <summary>
         /// Feach an animation picture normal.
@@ -23,14 +23,14 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">No Argument.</exception>
         /// <exception cref="InvalidOperationException">An invalid operation occurred.</exception>
-		internal static async Task<string?> GetRandomSetuURL(WebBrowser webBrowser)
+		internal static async Task<string?> GetRandomSetuUrl(WebBrowser webBrowser)
 		{
 			if (webBrowser == null)
 			{
 				throw new ArgumentNullException(nameof(webBrowser));
 			}
 
-			Uri request = new($"{URL}/?size=regular&r18=0");
+			Uri request = new($"{Url}/?size=regular&r18=0");
 
 			ObjectResponse<LoliconJson>? response = await webBrowser.UrlGetToJsonObject<LoliconJson>(request).ConfigureAwait(false);
 
@@ -39,7 +39,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 				return null;
 			}
 
-			if (string.IsNullOrEmpty(response.Content.data[0].urls.regular))
+			if (string.IsNullOrEmpty(response.Content?.data[0].urls.regular))
 			{
 				throw new InvalidOperationException(nameof(response.Content.data));
 			}
@@ -54,14 +54,14 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 		/// <returns></returns>
 		/// <exception cref="ArgumentNullException">No Argument.</exception>
 		/// <exception cref="InvalidOperationException">An invalid operation occurred.</exception>
-		internal static async Task<string?> GetRandomSetuR18URL(WebBrowser webBrowser)
+		internal static async Task<string?> GetRandomSetuR18Url(WebBrowser webBrowser)
 		{
 			if (webBrowser == null)
 			{
 				throw new ArgumentNullException(nameof(webBrowser));
 			}
 
-			Uri request = new($"{URL}/?size=regular&r18=1");
+			Uri request = new($"{Url}/?size=regular&r18=1");
 
 			ObjectResponse<LoliconJson>? response = await webBrowser.UrlGetToJsonObject<LoliconJson>(request).ConfigureAwait(false);
 
@@ -70,7 +70,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin.Api
 				return null;
 			}
 
-			if (string.IsNullOrEmpty(response.Content.data[0].urls.regular))
+			if (string.IsNullOrEmpty(response.Content?.data[0].urls.regular))
 			{
 				throw new InvalidOperationException(nameof(response.Content.data));
 			}

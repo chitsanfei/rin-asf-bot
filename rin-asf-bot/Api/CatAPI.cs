@@ -11,23 +11,23 @@ using Newtonsoft.Json;
 namespace ArchiSteamFarm.CustomPlugins.Rin.Api;
 
 internal static class CatAPI {
-	private const string URL = "https://api.thecatapi.com";
+	private const string Url = "https://api.thecatapi.com";
 
-	internal static async Task<Uri?> GetRandomCatURL(WebBrowser webBrowser, CancellationToken cancellationToken = default) {
+	internal static async Task<Uri?> GetRandomCatUrl(WebBrowser webBrowser, CancellationToken cancellationToken = default) {
 		ArgumentNullException.ThrowIfNull(webBrowser);
 
-		Uri request = new($"{URL}/v1/images/search");
+		Uri request = new($"{Url}/v1/images/search");
 
 		ObjectResponse<ImmutableList<MeowResponse>>? response = await webBrowser.UrlGetToJsonObject<ImmutableList<MeowResponse>>(request).ConfigureAwait(false);
 
-		return response?.Content?.FirstOrDefault()?.URL;
+		return response?.Content?.FirstOrDefault()?.Url;
 	}
 }
 
 [SuppressMessage("ReSharper", "ClassCannotBeInstantiated")]
 internal sealed class MeowResponse {
 	[JsonProperty("url", Required = Required.Always)]
-	internal readonly Uri URL = null!;
+	internal readonly Uri Url = null!;
 
 	[JsonConstructor]
 	private MeowResponse() { }

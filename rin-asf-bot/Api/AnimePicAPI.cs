@@ -12,7 +12,7 @@ internal static class AnimePicAPI
     /// <summary>
     ///    URL to the API.
     /// </summary>
-    private const string URL = "https://www.dmoe.cc/random.php?return=json";
+    private const string Url = "https://www.dmoe.cc/random.php?return=json";
 
     /// <summary>
     ///   Get a random anime picture.
@@ -25,11 +25,11 @@ internal static class AnimePicAPI
     {
         ArgumentNullException.ThrowIfNull(webBrowser);
 
-        Uri request = new($"{URL}");
+        Uri request = new($"{Url}");
 
         ObjectResponse<LoliApiResponse>? response = await webBrowser.UrlGetToJsonObject<LoliApiResponse>(request).ConfigureAwait(false);
 
-        return response.Content.imgurl;
+        return response?.Content?.imgurl;
     }
 
     /// <summary>
