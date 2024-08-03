@@ -19,13 +19,13 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="VersionASF" xml:space="preserve">
-        <value>6.0.4.4</value>
+        <value>6.0.5.2</value>
     </data>
     <data name="VersionPlugin" xml:space="preserve">
-        <value>1.0.8</value>
+        <value>1.0.8.1</value>
     </data>
     <data name="VersionDate" xml:space="preserve">
-        <value>2024/7/4</value>
+        <value>2024/8/3</value>
     </data>
     <data name="InitNotice" xml:space="preserve">
         <value>RinBotPlugin: Rin现在正在进行加载过程，测试版本为</value>
@@ -40,13 +40,14 @@
         <value>RinBotPlugin: Rin掉线了哦！ASF主程序将尝试自动重连！</value>
     </data>
     <data name="HelpMenu" xml:space="preserve">
-        <value>/pre 欢迎您使用RinBot呢，茫茫人海相遇可是一种缘分～
+        <value>/pre 欢迎您使用 RinBot 呢，茫茫人海相遇可是一种缘分～
 输入下列指令获得相应功能：
-!setu:获取一张色图
-!r18:获取限制的色图
-!anime:获取一张相对正常的二次元图片
-!cat:获取随机的猫猫图（ASF官方例程）
-!abt:寻找关于这个bot的一切，包括到底是哪个憨批作者写出来的！</value>
+!setu: 获取一张色图
+!r18: 获取限制的色图
+!anime: 获取一张相对正常的二次元图片
+!cat: 获取随机的猫猫图（ASF官方例程）
+!a: 本机器人的关于说明
+!h: 本机器人的菜单</value>
     </data>
     <data name="WarningSetuLost" xml:space="preserve">
         <value>没有找到相应的内容或者内容呢丢失了！QAQ</value>
@@ -61,9 +62,9 @@
         <value>好像没有对应的指令?输入「!h」可以查看可以使用的指令。</value>
     </data>
     <data name="About" xml:space="preserve">
-        <value>/code Github开源项目链接：https://github.com/mashirosa/rin-asf-bot
-在您使用该开源Bot时，请必须知悉本Bot并不收集任何用户信息，本Bot并未储存任何图片，本Bot使用的所有API均为第三方，作者不能控制或审计相关内容，本Bot仅供技术交流。请务必遵守您所在的相关法律使用。
-任何人员可以通过Github审查相关代码，并提出意见和改进。</value>
+        <value>/code Github 开源项目链接：https://github.com/chitsanfei/rin-asf-bot
+在您使用该开源机器人时，请必须知悉本机器人并不收集任何用户信息，本机器人并未储存任何图片，本机器人使用的所有API均为第三方，作者不能控制或审计相关内容，本机器人仅供技术交流。请务必遵守您所在的相关法律使用。
+任何人员可以通过 Github 审查相关代码，并提出意见和改进。</value>
     </data>
     <data name="WarningWebLink" xml:space="preserve">
         <value>Rin侦测到可能的一条链接哦！诈骗多发，请务必警惕陌生链接，网页千万条安全第一条。不要输入自己的任何账号密码，泄漏财产信息哦！！！</value>

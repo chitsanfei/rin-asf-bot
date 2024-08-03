@@ -18,7 +18,7 @@ using SteamKit2;
 namespace ArchiSteamFarm.CustomPlugins.Rin {
 	
 	[Export(typeof(IPlugin))]
-	internal sealed class RinBot : IASF, IBot, IBotCommand2, IBotConnection, IBotFriendRequest, IBotMessage, IBotModules, IBotTradeOffer {
+	internal sealed class RinBot : IASF, IBot, IBotCommand2, IBotConnection, IBotFriendRequest, IBotMessage, IBotModules {
 		
 		// Plugin Name
 		public string Name => nameof(RinBot);
@@ -102,8 +102,11 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
 					return await getUriOrErrorMessage(CatAPI.GetRandomCatUrl(bot.ArchiWebHandler.WebBrowser), Langs.WarningCatLost).ConfigureAwait(false);
 				case "H":
 					return Langs.HelpMenu;
-				case "ABT":
-					return Langs.About;
+				case "A":
+					return $"{Langs.About}\n" +
+					       $"插件版本：{Langs.VersionPlugin}\n" +
+					       $"建构时间：{Langs.VersionDate}\n" +
+					       $"ASF 测试版本：{Langs.VersionASF}";
 				default:
 					return Langs.WarningNoCommand;
 			}
