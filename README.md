@@ -18,10 +18,10 @@
 </p>
 
 ## Muti-Language Option
-[Simplified Chinese | 简体中文](./assets/docs/README_zhs.md)  
-[Traditional Chinese | 繁體中文](./assets/docs/README_zht.md)  
-[Japanese | 日本語](./assets/docs/README_ja.md)  
-[German | Deutsch](./assets/docs/README_de.md)  
+[Simplified Chinese | 简体中文](./assets/docs/README_zh_CN.md)  
+[Traditional Chinese | 繁體中文](./assets/docs/README_zh_TW.md)  
+[Japanese | 日本語](./assets/docs/README_ja_JP.md)  
+[German | Deutsch](./assets/docs/README_de_DE.md)  
 
 ## Description
 Rin is designed for giving steam gamers better experience, based [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm).
