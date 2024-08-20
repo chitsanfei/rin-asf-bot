@@ -41,15 +41,15 @@
     </data>
     <data name="HelpMenu" xml:space="preserve">
         <value>/pre 欢迎您使用 RinBot 呢，茫茫人海相遇可是一种缘分～
-                输入下列指令获得相应功能：
-                !setu: 获取一张色图
-                    |- 允许参数: !setu [参数] 获取多张色图（如：!setu 2）
-                !r18: 获取限制的色图
-                    |- 允许参数: !r18 [参数] 获取多张色图（如：!r18 2）
-                !anime: 获取一张相对正常的二次元图片
-                !cat: 获取随机的猫猫图（ASF官方例程）
-                !abt: 本机器人的关于说明
-                !h: 本机器人的菜单</value>
+输入下列指令获得相应功能：
+!setu: 获取一张色图
+    |- 允许参数: !setu [参数] 获取多张色图（如：!setu 2）
+!r18: 获取限制的色图
+    |- 允许参数: !r18 [参数] 获取多张色图（如：!r18 2）
+!anime: 获取一张相对正常的二次元图片
+!cat: 获取随机的猫猫图（ASF官方例程）
+!abt: 本机器人的关于说明
+!h: 本机器人的菜单</value>
     </data>
     <data name="WarningSetuLost" xml:space="preserve">
         <value>没有找到相应的内容或者内容呢丢失了！QAQ</value>
