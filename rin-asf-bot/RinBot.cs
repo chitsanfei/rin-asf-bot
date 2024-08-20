@@ -14,6 +14,7 @@ using ArchiSteamFarm.Steam;
 using ArchiSteamFarm.Steam.Data;
 using ArchiSteamFarm.CustomPlugins.Rin.Api;
 using SteamKit2;
+using System.Reflection;
 
 namespace ArchiSteamFarm.CustomPlugins.Rin {
 	
@@ -88,21 +89,96 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
 			// Command Handling
 			switch (args[0].ToUpperInvariant()) {
 				case "SETU":
-					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuUrl(bot.ArchiWebHandler.WebBrowser), Langs.WarningSetuLost).ConfigureAwait(false);
-				case "R18" when access >= EAccess.Operator:
-					return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18Url(bot.ArchiWebHandler.WebBrowser), Langs.WarningSetuLost).ConfigureAwait(false);
-				case "R18":
-					if (Utils.CheckFileExists()) {
-						return await getUrlOrErrorMessage(SetuAPI.GetRandomSetuR18Url(bot.ArchiWebHandler.WebBrowser), Langs.WarningSetuLost).ConfigureAwait(false);
+					if (args.Length == 1)
+					{
+						return await getUrlOrErrorMessage(SetuAPI.GetRandomSetu(bot.ArchiWebHandler.WebBrowser, new List<int> {0, 1, 1}), Langs.WarningSetuLost).ConfigureAwait(false);
 					}
-					return Langs.WarningNoPermission;
+					else if (args[1].Length > 0)
+					{
+						int argAsInt;
+						if (int.TryParse(args[1], out argAsInt))
+						{
+							if (argAsInt > 10)
+							{
+								return Langs.WarningParamOutrage;
+							}
+							else
+							{
+								return await getUrlOrErrorMessage(SetuAPI.GetRandomSetu(bot.ArchiWebHandler.WebBrowser, new List<int> {0, argAsInt, 1}), Langs.WarningSetuLost).ConfigureAwait(false);
+							}
+						}
+						else
+						{
+							return Langs.WarningParamIllegal;
+						}
+					}
+					else
+					{
+						return Langs.WarningWorkflow;
+					}
+				case "R18" when access >= EAccess.Operator:
+					if (args.Length == 1)
+					{
+						return await getUrlOrErrorMessage(SetuAPI.GetRandomSetu(bot.ArchiWebHandler.WebBrowser, new List<int> {1, 1, 1}), Langs.WarningSetuLost).ConfigureAwait(false);
+					}
+					else if (args[1].Length > 0)
+					{
+						int argAsInt;
+						if (int.TryParse(args[1], out argAsInt))
+						{
+							if (argAsInt > 10)
+							{
+								return Langs.WarningParamOutrage;
+							}
+							else
+							{
+								return await getUrlOrErrorMessage(SetuAPI.GetRandomSetu(bot.ArchiWebHandler.WebBrowser, new List<int> {1, argAsInt, 1}), Langs.WarningSetuLost).ConfigureAwait(false);
+							}
+						}
+						else
+						{
+							return Langs.WarningParamIllegal;
+						}
+					}
+					else
+					{
+						return Langs.WarningWorkflow;
+					}
+				case "R18" when Utils.CheckFileExists():
+					if (args.Length == 1)
+					{
+						return await getUrlOrErrorMessage(SetuAPI.GetRandomSetu(bot.ArchiWebHandler.WebBrowser, new List<int> {1, 1, 1}), Langs.WarningSetuLost).ConfigureAwait(false);
+					}
+					else if (args[1].Length > 0)
+					{
+						int argAsInt;
+						if (int.TryParse(args[1], out argAsInt))
+						{
+							if (argAsInt > 10)
+							{
+								return Langs.WarningParamOutrage;
+							}
+							else
+							{
+								return await getUrlOrErrorMessage(SetuAPI.GetRandomSetu(bot.ArchiWebHandler.WebBrowser, new List<int> {1, argAsInt, 1}), Langs.WarningSetuLost).ConfigureAwait(false);
+							}
+						}
+						else
+						{
+							return Langs.WarningParamIllegal;
+						}
+					}
+					else
+					{
+						return Langs.WarningWorkflow;
+					}
 				case "ANIME":
 					return await getUrlOrErrorMessage(AnimePicAPI.GetRandomAnimePic(bot.ArchiWebHandler.WebBrowser), Langs.WarningAnimePicLost).ConfigureAwait(false);
 				case "CAT":
 					return await getUriOrErrorMessage(CatAPI.GetRandomCatUrl(bot.ArchiWebHandler.WebBrowser), Langs.WarningCatLost).ConfigureAwait(false);
 				case "H":
 					return Langs.HelpMenu;
-				case "A":
+				case "ABT":
 					return $"{Langs.About}\n" +
 					       $"插件版本：{Langs.VersionPlugin}\n" +
 					       $"建构时间：{Langs.VersionDate}\n" +

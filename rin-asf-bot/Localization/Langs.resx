@@ -22,10 +22,10 @@
         <value>6.0.5.2</value>
     </data>
     <data name="VersionPlugin" xml:space="preserve">
-        <value>1.0.8.1</value>
+        <value>1.0.8.2</value>
     </data>
     <data name="VersionDate" xml:space="preserve">
-        <value>2024/8/3</value>
+        <value>2024/8/20</value>
     </data>
     <data name="InitNotice" xml:space="preserve">
         <value>RinBotPlugin: Rin现在正在进行加载过程，测试版本为</value>
@@ -41,13 +41,13 @@
     </data>
     <data name="HelpMenu" xml:space="preserve">
         <value>/pre 欢迎您使用 RinBot 呢，茫茫人海相遇可是一种缘分～
-输入下列指令获得相应功能：
-!setu: 获取一张色图
-!r18: 获取限制的色图
-!anime: 获取一张相对正常的二次元图片
-!cat: 获取随机的猫猫图（ASF官方例程）
-!a: 本机器人的关于说明
-!h: 本机器人的菜单</value>
+                输入下列指令获得相应功能：
+                !setu: 获取一张色图
+                !r18: 获取限制的色图
+                !anime: 获取一张相对正常的二次元图片
+                !cat: 获取随机的猫猫图（ASF官方例程）
+                !abt: 本机器人的关于说明
+                !h: 本机器人的菜单</value>
     </data>
     <data name="WarningSetuLost" xml:space="preserve">
         <value>没有找到相应的内容或者内容呢丢失了！QAQ</value>
@@ -74,5 +74,15 @@
     </data>
     <data name="WarningRateLimit" xml:space="preserve">
         <value>您已经触发请求上限，请休息一下！</value>
+    </data>
+    <data name="WarningParamOutrage" xml:space="preserve">
+        <value>您设置的参数超出了限制！</value>
+    </data>
+    <data name="WarningParamIllegal" xml:space="preserve">
+        <value>您设置的参数是非法参数！</value>
+    </data>
+    <data name="WarningWorkflow" xml:space="preserve">
+        <value>执行流出现了错误，触发区域并没有设置异常抛出，请联系开发者获取支持。
+        发生在方法体：</value>
     </data>
 </root>

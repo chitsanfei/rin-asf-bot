@@ -211,5 +211,33 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
                 return ResourceManager.GetString("WarningWebLink", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///  Looks up a localized string similar to 您设置的参数超出了限制！
+        /// </summary>
+        internal static string WarningParamOutrage {
+            get {
+                return ResourceManager.GetString("WarningParamOutrage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///  Looks up a localized string similar to 您设置的参数是非法参数！
+        /// </summary>
+        internal static string WarningParamIllegal {
+            get {
+                return ResourceManager.GetString("WarningParamIllegal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///  Looks up a localized string similar to 执行流出现了错误，触发区域并没有设置异常抛出，请联系开发者获取支持。
+        /// 发生在方法体：
+        /// </summary>
+        internal static string WarningWorkflow {
+            get {
+                return ResourceManager.GetString("WarningWorkflow", resourceCulture);
+            }
+        }
     }
 }
