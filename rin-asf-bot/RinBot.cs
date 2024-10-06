@@ -2,19 +2,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Composition;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ArchiSteamFarm.Core;
-using ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization;
 using ArchiSteamFarm.Plugins.Interfaces;
 using ArchiSteamFarm.Steam;
 using ArchiSteamFarm.Steam.Data;
-using ArchiSteamFarm.CustomPlugins.Rin.Api;
 using SteamKit2;
-using System.Reflection;
+using ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization;
+using ArchiSteamFarm.CustomPlugins.Rin.Api;
 
 namespace ArchiSteamFarm.CustomPlugins.Rin {
 	
@@ -22,14 +22,19 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
 	internal sealed class RinBot : IASF, IBot, IBotCommand2, IBotConnection, IBotFriendRequest, IBotMessage, IBotModules {
 		
 		// Plugin Name
+		[JsonInclude]
+		[Required]
 		public string Name => nameof(RinBot);
 
+		[JsonInclude]
+		[Required]
 		// Plugin Version
 		public Version Version => typeof(RinBot).Assembly.GetName().Version ?? throw new InvalidOperationException(nameof(Version));
 
 		// Custom Field to Enable/Disable Plugin
 		[JsonInclude]
-		public bool CustomIsEnabledField { get; private set; } = true;
+		[Required]
+		public bool CustomIsEnabledField { get; private init; } = false;
 
 		// Dictionary to Track User Request Limits
 		private readonly Dictionary<ulong, (int count, DateTime lastRequestTime)> UserRequestLimits = new Dictionary<ulong, (int, DateTime)>();

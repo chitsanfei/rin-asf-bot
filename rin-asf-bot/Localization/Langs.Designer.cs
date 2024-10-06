@@ -74,10 +74,12 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         ///   Looks up a localized string similar to /pre 欢迎您使用 RinBot 呢，茫茫人海相遇可是一种缘分～
         ///输入下列指令获得相应功能：
         ///!setu: 获取一张色图
+        ///    |- 允许参数: !setu [参数] 获取多张色图（如：!setu 2）
         ///!r18: 获取限制的色图
+        ///    |- 允许参数: !r18 [参数] 获取多张色图（如：!r18 2）
         ///!anime: 获取一张相对正常的二次元图片
         ///!cat: 获取随机的猫猫图（ASF官方例程）
-        ///!a: 本机器人的关于说明
+        ///!abt: 本机器人的关于说明
         ///!h: 本机器人的菜单.
         /// </summary>
         internal static string HelpMenu {
@@ -114,7 +116,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6.0.5.2.
+        ///   Looks up a localized string similar to 6.0.6.4.
         /// </summary>
         internal static string VersionASF {
             get {
@@ -123,7 +125,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2024/8/3.
+        ///   Looks up a localized string similar to 2024/10/7.
         /// </summary>
         internal static string VersionDate {
             get {
@@ -132,7 +134,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.0.8.1.
+        ///   Looks up a localized string similar to 1.0.8.3.
         /// </summary>
         internal static string VersionPlugin {
             get {
@@ -186,6 +188,24 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 您设置的参数是非法参数！.
+        /// </summary>
+        internal static string WarningParamIllegal {
+            get {
+                return ResourceManager.GetString("WarningParamIllegal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 您设置的参数超出了限制！.
+        /// </summary>
+        internal static string WarningParamOutrage {
+            get {
+                return ResourceManager.GetString("WarningParamOutrage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 您已经触发请求上限，请休息一下！.
         /// </summary>
         internal static string WarningRateLimit {
@@ -211,28 +231,10 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
                 return ResourceManager.GetString("WarningWebLink", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///  Looks up a localized string similar to 您设置的参数超出了限制！
-        /// </summary>
-        internal static string WarningParamOutrage {
-            get {
-                return ResourceManager.GetString("WarningParamOutrage", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///  Looks up a localized string similar to 您设置的参数是非法参数！
-        /// </summary>
-        internal static string WarningParamIllegal {
-            get {
-                return ResourceManager.GetString("WarningParamIllegal", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///  Looks up a localized string similar to 执行流出现了错误，触发区域并没有设置异常抛出，请联系开发者获取支持。
-        /// 发生在方法体：
+        ///   Looks up a localized string similar to 执行流出现了错误，触发区域并没有设置异常抛出，请联系开发者获取支持。
+        ///        发生在方法体：.
         /// </summary>
         internal static string WarningWorkflow {
             get {
