@@ -116,7 +116,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6.0.6.4.
+        ///   Looks up a localized string similar to 6.0.5.2.
         /// </summary>
         internal static string VersionASF {
             get {
