@@ -144,6 +144,8 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
 					{
 						return Langs.WarningWorkflow;
 					}
+				case "R18" when access < EAccess.Operator:
+					return Langs.WarningNoPermission;
 				case "R18" when Utils.CheckFileExists():
 					if (args.Length == 1)
 					{
