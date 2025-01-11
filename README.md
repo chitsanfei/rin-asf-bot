@@ -1,17 +1,12 @@
-```plaintext
-注意：
-暂无力维护本项目，本项目的最后一次成功建构使用 dotnet 8.0, C# 12, ASF 6.0.5.2；
-目前已知至 24/10/7 ASF 的所有高于 6.0.5.2 的新版本的建构环境是 dotnet 8.0.8，这会导致本插件挂载时导致以下错误：
-System.TypeLoadException: Could not load type 'System.Diagnostics.DebuggerNonUserCodeAttribute' from assembly 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
-鉴于这是一个运行时错误，且可能和 dotnet 的更新有关，建议若您使用，自行编译 ASF 本体或暂时关闭更新，使用 6.0.5.2 版本。
-```
-
-```
-Attention:
-This project is currently unmaintained. The last successful build of this project used .NET 8.0, C# 12, and ASF 6.0.5.2. As of 24/10/7, it is known that all ASF versions beyond 6.0.5.2 are built with .NET 8.0.8, which causes the following error when loading this plugin:
-System.TypeLoadException: Could not load type 'System.Diagnostics.DebuggerNonUserCodeAttribute' from assembly 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
-Since this is a runtime error likely related to updates in .NET, it is recommended that if you use this project, either compile the ASF core yourself or temporarily disable updates and use version 6.0.5.2.
-```
+> [!CAUTION]
+> 暂无力维护本项目，本项目的最后一次成功建构使用 dotnet 8.0, C# 12, ASF 6.0.5.2；
+> 目前已知至 24/10/7 ASF 的所有高于 6.0.5.2 的新版本的建构环境是 dotnet 8.0.8，这会导致本插件挂载时导致以下错误：
+> System.TypeLoadException: Could not load type 'System.Diagnostics.DebuggerNonUserCodeAttribute' from assembly 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
+> 鉴于这是一个运行时错误，且可能和 dotnet 的更新有关，建议若您使用，自行编译 ASF 本体或暂时关闭更新，使用 6.0.5.2 版本。
+> 
+> This project is currently unmaintained. The last successful build of this project used .NET 8.0, C# 12, and ASF 6.0.5.2. As of 24/10/7, it is known that all ASF versions beyond 6.0.5.2 are built with .NET 8.0.8, which causes the  following error when loading this plugin:
+> System.TypeLoadException: Could not load type 'System.Diagnostics.DebuggerNonUserCodeAttribute' from assembly 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
+> Since this is a runtime error likely related to updates in .NET, it is recommended that if you use this project, either compile the ASF core yourself or temporarily disable updates and use version 6.0.5.2.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/chitsanfei/rin-asf-bot/master/assets/banner.png" height="200">
