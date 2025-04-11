@@ -9,7 +9,7 @@ env:
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'ArchiSteamFarm/**'
       - 'rin-asf-bot/**'
@@ -65,5 +65,6 @@ jobs:
       with:
         name: asf-with-plugin-${{ matrix.os }}
         path: |
-          **/ArchiSteamFarm.CustomPlugins.Rin.dll
+
+          ArchiSteamFarm/ArchiSteamFarm/bin/Release/net9.0/**
         compression-level: 0
