@@ -1,5 +1,11 @@
 name: ASF with Plugin Build
 
+env:
+  TARGET_FRAMEWORK: net9.0
+  DOTNET_VERSION: |
+    9.0.x
+    8.0.x
+
 on:
   workflow_dispatch:
   push:
@@ -24,9 +30,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: |
-          9.0.x
-          8.0.x
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Build Plugin
       working-directory: rin-asf-bot
@@ -35,27 +39,27 @@ jobs:
         dotnet build -c Release
 
     - name: Prepare ASF Directory
-      working-directory: ArchiSteamFarm
-      run: mkdir -p bin/Release/net9.0/plugins/ArchiSteamFarm.CustomPlugins.Rin
+      working-directory: ArchiSteamFarm/ArchiSteamFarm
+      run: mkdir -p bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/ArchiSteamFarm.CustomPlugins.Rin
 
     - name: Copy Plugin Artifacts
       shell: pwsh
       run: |
-        $pluginPath = 'rin-asf-bot/bin/Release/net9.0/*'
-        $targetPath = 'ArchiSteamFarm/bin/Release/net9.0/plugins/ArchiSteamFarm.CustomPlugins.Rin/'
+        $pluginPath = 'rin-asf-bot/bin/Release/${{ env.TARGET_FRAMEWORK }}/**/*.dll'
+        $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/ArchiSteamFarm.CustomPlugins.Rin'
+        New-Item -ItemType Directory -Path $targetPath -Force
         Copy-Item -Path $pluginPath -Destination $targetPath -Recurse -Force
 
     - name: Build ASF
       working-directory: ArchiSteamFarm
       run: |
         dotnet restore
-        dotnet publish -c Release -o bin/Release/net9.0
+        dotnet publish -c Release -o bin/Release/${{ env.TARGET_FRAMEWORK }}
 
     - name: Package Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: asf-with-plugin-${{ matrix.os }}
         path: |
-          ArchiSteamFarm/bin/Release/net9.0/**
-          ArchiSteamFarm/ASF-ui/
+          ArchiSteamFarm/ArchiSteamFarm/bin/Release/net9.0/**
         compression-level: 0
