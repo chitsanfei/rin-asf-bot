@@ -116,7 +116,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6.0.5.2.
+        ///   Looks up a localized string similar to 6.1.4.3.
         /// </summary>
         internal static string VersionASF {
             get {
@@ -125,7 +125,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2024/10/7.
+        ///   Looks up a localized string similar to 2025/4/11.
         /// </summary>
         internal static string VersionDate {
             get {
@@ -134,7 +134,7 @@ namespace ArchiSteamFarm.CustomPlugins.Bot.Rin.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.0.8.3.
+        ///   Looks up a localized string similar to 1.0.9.0.
         /// </summary>
         internal static string VersionPlugin {
             get {

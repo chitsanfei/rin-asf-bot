@@ -4,14 +4,14 @@
     <Description>ArchiSteamFarm.CustomPlugins.Bot.Rin</Description>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" PrivateAssets="all" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" IncludeAssets="compile" Version="13.0.3" />
-    <PackageReference Include="SteamKit2" IncludeAssets="compile" Version="3.0.0-Beta.2" />
-    <PackageReference Include="System.Composition.AttributedModel" IncludeAssets="compile" Version="8.0.0" />
+    <PackageReference Include="SteamKit2" Version="3.0.2" />
+    <PackageReference Include="System.Composition.AttributedModel" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
