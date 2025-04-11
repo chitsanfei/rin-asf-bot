@@ -50,7 +50,7 @@ jobs:
             Write-Error "Plugin DLL not found at $pluginPath"
             exit 1
         }
-        $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/ArchiSteamFarm.CustomPlugins.Rin'
+        $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/'
         New-Item -ItemType Directory -Path $targetPath -Force
         Copy-Item -Path $pluginPath -Destination $targetPath -Force
 
