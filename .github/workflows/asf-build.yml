@@ -45,10 +45,14 @@ jobs:
     - name: Copy Plugin Artifacts
       shell: pwsh
       run: |
-        $pluginPath = 'rin-asf-bot/bin/Release/${{ env.TARGET_FRAMEWORK }}/**/*.dll'
+        $pluginPath = 'rin-asf-bot/bin/Release/${{ env.TARGET_FRAMEWORK }}/ArchiSteamFarm.CustomPlugins.Rin.dll'
+        if (-not (Test-Path $pluginPath)) {
+            Write-Error "Plugin DLL not found at $pluginPath"
+            exit 1
+        }
         $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/ArchiSteamFarm.CustomPlugins.Rin'
         New-Item -ItemType Directory -Path $targetPath -Force
-        Copy-Item -Path $pluginPath -Destination $targetPath -Recurse -Force
+        Copy-Item -Path $pluginPath -Destination $targetPath -Force
 
     - name: Build ASF
       working-directory: ArchiSteamFarm
@@ -61,5 +65,5 @@ jobs:
       with:
         name: asf-with-plugin-${{ matrix.os }}
         path: |
-          ArchiSteamFarm/ArchiSteamFarm/bin/Release/net9.0/**
+          **/ArchiSteamFarm.CustomPlugins.Rin.dll
         compression-level: 0

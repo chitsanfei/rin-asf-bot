@@ -57,6 +57,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
         /// </summary>
         /// <param name="additionalConfigProperties">Additional configuration properties</param>
         public Task OnASFInit(IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null) {
+            _ = RinConfig.Instance;
             return Task.CompletedTask;
         }
         
@@ -83,8 +84,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
         /// </summary>
         /// <param name="bot">The bot instance</param>
         public Task OnBotInit(Steam.Bot bot) {
-            ASF.ArchiLogger.LogGenericWarning(Langs.InitNotice + Langs.VersionASF);
-            ASF.ArchiLogger.LogGenericWarning(Langs.InitProgramUnstable);
+            ASF.ArchiLogger.LogGenericWarning($"{Langs.InitNotice}{Langs.VersionASF}\n{Langs.InitProgramUnstable}");
             return Task.CompletedTask;
         }
         
