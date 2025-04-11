@@ -6,12 +6,12 @@ Rinの名前は中国の文字「凛」と命名されており、特別な意�
 ---
 
 ### 機能
-- スチームグループチャットとプライベートチャットでアニメの画像を投稿する。
-- かわいい猫の画像を投稿する。
+- Steam のグループチャットや個人チャットでアニメ画像を送信します。
+- かわいい猫の画像を投稿します
 
 ### 互換性
-- RinBotは、Windows、Linux、またはMacOSで動作するArchiSteamFarmに完全に対応する必要があります。
-- RinBotは特定のArchiSteamFarmバージョン専用で、新しいリリースの際にはサポートするバージョンをお知らせします。推奨されているASFの適切なバージョンを使用してください。
+- RinBot は Windows、Linux、または MacOS 上の ArchiSteamFarm を完全にサポートするはずです。
+- RinBot は特定のバージョンの ArchiSteamFarm でのみ使用可能で、新しいバージョンをリリースする際にサポートしているバージョンを通常通知しています。推奨される適切なバージョンを少なくとも使用してください。
 
 ### 手動コンパイル
 
@@ -20,4 +20,4 @@ dotnet build -c Release
 ```
 
 ## ヘルプ & 使用方法
-- 私たちのGithub [Wikiページ](https://github.com/chitsanfei/rin-asf-bot/wiki)をご覧ください。
+- 私たちの[Github Wikiページ](https://github.com/chitsanfei/rin-asf-bot/wiki)をご覧ください。

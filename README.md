@@ -1,15 +1,5 @@
-> [!CAUTION]
-> 暂无力维护本项目，本项目的最后一次成功建构使用 dotnet 8.0, C# 12, ASF 6.0.5.2；
-> 目前已知至 24/10/7 ASF 的所有高于 6.0.5.2 的新版本的建构环境是 dotnet 8.0.8，这会导致本插件挂载时导致以下错误：
-> System.TypeLoadException: Could not load type 'System.Diagnostics.DebuggerNonUserCodeAttribute' from assembly 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
-> 鉴于这是一个运行时错误，且可能和 dotnet 的更新有关，建议若您使用，自行编译 ASF 本体或暂时关闭更新，使用 6.0.5.2 版本。
-> 
-> This project is currently unmaintained. The last successful build of this project used .NET 8.0, C# 12, and ASF 6.0.5.2. As of 24/10/7, it is known that all ASF versions beyond 6.0.5.2 are built with .NET 8.0.8, which causes the  following error when loading this plugin:
-> System.TypeLoadException: Could not load type 'System.Diagnostics.DebuggerNonUserCodeAttribute' from assembly 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
-> Since this is a runtime error likely related to updates in .NET, it is recommended that if you use this project, either compile the ASF core yourself or temporarily disable updates and use version 6.0.5.2.
-
 <div align="center">
-  <img src="https://raw.githubusercontent.com/chitsanfei/rin-asf-bot/master/assets/banner.png" height="200">
+  <img src="./assets/banner.png" height="200">
   <h1>chitsanfei/RinBot</h1>
   <p>A highly useable Steam Pic Posting Bot on Steam, dev based on ASF.</p>
 </div>
@@ -26,6 +16,9 @@
 <p align="center">
   <img src="https://repobeats.axiom.co/api/embed/10309d9ebe0dad4128646852628802e7dfe79ea3.svg" alt="Repobeats analytics image">
 </p>
+
+> [!CAUTION]
+> 使用官方编译的新版本 ASF 挂载本项目插件会存在运行时错误 System.TypeLoadException，这一问题尚未得到解决，目前建议使用我们[包含插件临时自编译的 ASF](https://github.com/chitsanfei/rin-asf-bot/actions/workflows/asf-build.yml)。
 
 ## Muti-Language Option
 [Simplified Chinese | 简体中文](./assets/docs/README_zh_CN.md)  
