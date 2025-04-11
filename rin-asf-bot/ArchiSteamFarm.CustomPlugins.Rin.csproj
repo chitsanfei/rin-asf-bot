@@ -2,38 +2,24 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <Description>ArchiSteamFarm.CustomPlugins.Bot.Rin</Description>
-    <LangVersion>12</LangVersion>
+    <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
     <TargetFramework>net9.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RollForward>LatestMajor</RollForward>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ConfigureAwaitChecker.Analyzer" PrivateAssets="all" Version="5.0.0" />
-    <PackageReference Include="Newtonsoft.Json" IncludeAssets="compile" Version="13.0.3" />
+    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="all" />
     <PackageReference Include="SteamKit2" Version="3.0.2" />
-    <PackageReference Include="System.Composition.AttributedModel" Version="9.0.3" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" IncludeAssets="compile" Version="2.2.5" />
+    <PackageReference Include="System.Composition.AttributedModel" Version="9.0.3" IncludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ArchiSteamFarm\ArchiSteamFarm\ArchiSteamFarm.csproj" ExcludeAssets="all" Private="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="..\ArchiSteamFarm\ArchiSteamFarm\bin\Debug\net8.0\ref">
-    </Folder>
-    <Folder Include="..\ArchiSteamFarm\ArchiSteamFarm\obj\Debug\net8.0\ref">
-    </Folder>
-    <Folder Include="Api\" />
-    <Folder Include="Localization\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Api\" />
-    <None Remove="Localization\" />
   </ItemGroup>
 
   <ItemGroup>
