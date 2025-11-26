@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="all" />
+    <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" PrivateAssets="all" />
     <PackageReference Include="SteamKit2" Version="3.0.2" />
     <PackageReference Include="System.Composition.AttributedModel" Version="9.0.3" IncludeAssets="compile" />
   </ItemGroup>
