@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using ArchiSteamFarm.Core;
 using ArchiSteamFarm.Web;
 using ArchiSteamFarm.Web.Responses;
 
@@ -98,21 +99,50 @@ internal static class SetuAPI
 
         ObjectResponse<LoliconJson>? response = await webBrowser.UrlGetToJsonObject<LoliconJson>(request).ConfigureAwait(false);
 
-        if (response == null || response.Content == null || response.Content.Data == null)
+        if (response == null || response.Content == null)
+        {
+            return string.Empty;
+        }
+
+        // Check if API returned an error
+        if (!string.IsNullOrEmpty(response.Content.Error))
+        {
+            Console.WriteLine($"Setu API Error: {response.Content.Error}");
+            return string.Empty;
+        }
+
+        // Check if Data is null or empty
+        if (response.Content.Data == null || response.Content.Data.Count == 0)
         {
             return string.Empty;
         }
 
         if (requestNum == 1)
         {
-            return response.Content.Data[0].Urls?.Regular;
+            // Return Original URL (since quality is set to "original")
+            var firstItem = response.Content.Data[0];
+            if (firstItem?.Urls?.Original != null)
+            {
+                return firstItem.Urls.Original;
+            }
+            // Fallback to regular if original is not available
+            if (firstItem?.Urls?.Regular != null)
+            {
+                return firstItem.Urls.Regular;
+            }
+            return string.Empty;
         }
 
         var resultBuilder = new System.Text.StringBuilder();
 
         foreach (var item in response.Content.Data)
         {
-            if (!string.IsNullOrEmpty(item.Urls?.Regular))
+            // Prefer Original URL, fallback to Regular
+            if (item?.Urls?.Original != null)
+            {
+                resultBuilder.AppendLine(item.Urls.Original);
+            }
+            else if (item?.Urls?.Regular != null)
             {
                 resultBuilder.AppendLine(item.Urls.Regular);
             }
@@ -177,10 +207,20 @@ internal static class SetuAPI
 
     private class Urls
     {
+        [JsonPropertyName("original")]
+        public string? Original { get; set; }
+
         [JsonPropertyName("regular")]
         public string? Regular { get; set; }
 
-        //public string original { get; set; }
+        [JsonPropertyName("small")]
+        public string? Small { get; set; }
+
+        [JsonPropertyName("thumb")]
+        public string? Thumb { get; set; }
+
+        [JsonPropertyName("compressed")]
+        public string? Compressed { get; set; }
     }
 
 
