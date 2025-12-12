@@ -17,7 +17,7 @@
   <img src="https://repobeats.axiom.co/api/embed/10309d9ebe0dad4128646852628802e7dfe79ea3.svg" alt="Repobeats analytics image">
 </p>
 
-> [!TIPP]
+> [!TIP]
 > Laufzeitfehler wurden behoben. Sie können entweder das Plugin verwenden oder unseren [ASF mit eingebautem Plugin](https://github.com/chitsanfei/rin-asf-bot/actions/workflows/asf-build.yml).
 
 ## Mehrsprachige Optionen
