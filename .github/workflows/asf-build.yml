@@ -35,63 +35,70 @@ jobs:
         dotnet restore
         dotnet build -c Release
 
-    - name: Detect Plugin Target Framework
+    - name: Detect Plugin Target Framework (Windows)
+      if: matrix.os == 'windows-latest'
       id: detect-framework
+      shell: pwsh
       run: |
-        # Extract target framework from csproj file
-        # Use PowerShell on Windows, bash on Linux
-        if [ "$RUNNER_OS" = "Windows" ]; then
-          $content = Get-Content -Path 'rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj' -Raw
-          if ($content -match '<TargetFramework>([^<]+)</TargetFramework>') {
-            $targetFramework = $matches[1]
-            Write-Host "Detected target framework: $targetFramework"
-            echo "target-framework=$targetFramework" >> $env:GITHUB_OUTPUT
-          } else {
-            Write-Error "Failed to detect target framework"
+        $content = Get-Content -Path 'rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj' -Raw
+        if ($content -match '<TargetFramework>([^<]+)</TargetFramework>') {
+          $targetFramework = $matches[1]
+          Write-Host "Detected target framework: $targetFramework"
+          echo "target-framework=$targetFramework" >> $env:GITHUB_OUTPUT
+        } else {
+          Write-Error "Failed to detect target framework"
+          exit 1
+        }
+
+    - name: Detect Plugin Target Framework (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      id: detect-framework
+      shell: bash
+      run: |
+        TARGET_FRAMEWORK=$(grep -oP '<TargetFramework>\K[^<]+' rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj | head -n 1)
+        echo "Detected target framework: $TARGET_FRAMEWORK"
+        echo "target-framework=$TARGET_FRAMEWORK" >> $GITHUB_OUTPUT
+
+    - name: Prepare ASF Directory (Windows)
+      if: matrix.os == 'windows-latest'
+      shell: pwsh
+      run: |
+        $targetPath = "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
+        New-Item -ItemType Directory -Path $targetPath -Force
+
+    - name: Prepare ASF Directory (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash
+      run: |
+        mkdir -p "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
+
+    - name: Copy Plugin Artifacts (Windows)
+      if: matrix.os == 'windows-latest'
+      shell: pwsh
+      run: |
+        $pluginPaths = Get-ChildItem -Path 'rin-asf-bot' -Recurse -Filter 'ArchiSteamFarm.CustomPlugins.Rin.dll' -File
+        if ($pluginPaths.Count -eq 0) {
+            Write-Error "Plugin DLL not found"
             exit 1
-          }
-        else
-          TARGET_FRAMEWORK=$(grep -oP '<TargetFramework>\K[^<]+' rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj | head -n 1)
-          echo "Detected target framework: $TARGET_FRAMEWORK"
-          echo "target-framework=$TARGET_FRAMEWORK" >> $GITHUB_OUTPUT
-        fi
+        }
+        $pluginPath = $pluginPaths[0].FullName
+        Write-Host "Found plugin at: $pluginPath"
 
-    - name: Prepare ASF Directory
+        $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/'
+        New-Item -ItemType Directory -Path $targetPath -Force
+        Copy-Item -Path $pluginPath -Destination $targetPath -Force
+
+    - name: Copy Plugin Artifacts (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash
       run: |
-        # Use PowerShell on Windows, bash on Linux
-        if [ "$RUNNER_OS" = "Windows" ]; then
-          $targetPath = "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
-          New-Item -ItemType Directory -Path $targetPath -Force
-        else
-          mkdir -p "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
+        DLL_PATH=$(find ./rin-asf-bot -name "ArchiSteamFarm.CustomPlugins.Rin.dll" -type f | head -n 1)
+        if [ -z "$DLL_PATH" ]; then
+          echo "Error: Plugin DLL not found"
+          exit 1
         fi
-
-    - name: Copy Plugin Artifacts
-      run: |
-        # Use PowerShell on Windows, bash on Linux
-        if [ "$RUNNER_OS" = "Windows" ]; then
-          # PowerShell for Windows
-          $pluginPaths = Get-ChildItem -Path 'rin-asf-bot' -Recurse -Filter 'ArchiSteamFarm.CustomPlugins.Rin.dll' -File
-          if ($pluginPaths.Count -eq 0) {
-              Write-Error "Plugin DLL not found"
-              exit 1
-          }
-          $pluginPath = $pluginPaths[0].FullName
-          Write-Host "Found plugin at: $pluginPath"
-
-          $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/'
-          New-Item -ItemType Directory -Path $targetPath -Force
-          Copy-Item -Path $pluginPath -Destination $targetPath -Force
-        else
-          # Bash for Linux
-          DLL_PATH=$(find ./rin-asf-bot -name "ArchiSteamFarm.CustomPlugins.Rin.dll" -type f | head -n 1)
-          if [ -z "$DLL_PATH" ]; then
-            echo "Error: Plugin DLL not found"
-            exit 1
-          fi
-          echo "Found DLL at: $DLL_PATH"
-          cp "$DLL_PATH" "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/"
-        fi
+        echo "Found DLL at: $DLL_PATH"
+        cp "$DLL_PATH" "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/"
 
     - name: Build ASF
       working-directory: ArchiSteamFarm
