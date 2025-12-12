@@ -17,7 +17,7 @@
   <img src="https://repobeats.axiom.co/api/embed/10309d9ebe0dad4128646852628802e7dfe79ea3.svg" alt="Repobeats analytics image">
 </p>
 
-> [!TIPS]
+> [!TIP]
 > 运行时错误已经解决，您既可以使用插件，也可以使用我们[包含插件临时自编译的 ASF](https://github.com/chitsanfei/rin-asf-bot/actions/workflows/asf-build.yml)。
 
 ## Muti-Language Option
