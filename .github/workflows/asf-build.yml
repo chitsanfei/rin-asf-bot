@@ -3,7 +3,7 @@ name: ASF with Plugin Build
 env:
   TARGET_FRAMEWORK: net10.0
   DOTNET_VERSION: |
-   10.0.x
+    10.0.x
     9.0.x
     8.0.x
 
@@ -43,25 +43,29 @@ jobs:
       run: |
         mkdir -p "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
 
-    - name: Copy Plugin Artifacts
+    - name: Copy Plugin Artifacts (Windows)
+      if: matrix.os == 'windows-latest'
+      shell: pwsh
       run: |
-        if [ "${{ matrix.os }}" = "windows-latest" ]; then
-          $pluginPath = "rin-asf-bot/bin/Release/${{ env.TARGET_FRAMEWORK }}/ArchiSteamFarm.CustomPlugins.Rin.dll"
-          if (-not (Test-Path $pluginPath)) {
-              Write-Error "Plugin DLL not found at $pluginPath"
-              exit 1
-          }
-          $targetPath = "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/"
-          New-Item -ItemType Directory -Path $targetPath -Force
-          Copy-Item -Path $pluginPath -Destination $targetPath -Force
-        else
-          DLL_PATH="rin-asf-bot/bin/Release/${{ env.TARGET_FRAMEWORK }}/ArchiSteamFarm.CustomPlugins.Rin.dll"
-          if [ ! -f "$DLL_PATH" ]; then
-            echo "Error: Plugin DLL not found at $DLL_PATH"
+        $pluginPath = "rin-asf-bot/bin/Release/${{ env.TARGET_FRAMEWORK }}/ArchiSteamFarm.CustomPlugins.Rin.dll"
+        if (-not (Test-Path $pluginPath)) {
+            Write-Error "Plugin DLL not found at $pluginPath"
             exit 1
-          fi
-          cp "$DLL_PATH" "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/"
+        }
+        $targetPath = "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/"
+        New-Item -ItemType Directory -Path $targetPath -Force
+        Copy-Item -Path $pluginPath -Destination $targetPath -Force
+
+    - name: Copy Plugin Artifacts (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash
+      run: |
+        DLL_PATH="rin-asf-bot/bin/Release/${{ env.TARGET_FRAMEWORK }}/ArchiSteamFarm.CustomPlugins.Rin.dll"
+        if [ ! -f "$DLL_PATH" ]; then
+          echo "Error: Plugin DLL not found at $DLL_PATH"
+          exit 1
         fi
+        cp "$DLL_PATH" "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ env.TARGET_FRAMEWORK }}/plugins/"
 
     - name: Build ASF
       run: |
