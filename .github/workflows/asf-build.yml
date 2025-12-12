@@ -37,7 +37,7 @@ jobs:
 
     - name: Detect Plugin Target Framework (Windows)
       if: matrix.os == 'windows-latest'
-      id: detect-framework
+      id: detect-framework-windows
       shell: pwsh
       run: |
         $content = Get-Content -Path 'rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj' -Raw
@@ -52,7 +52,7 @@ jobs:
 
     - name: Detect Plugin Target Framework (Linux)
       if: matrix.os == 'ubuntu-latest'
-      id: detect-framework
+      id: detect-framework-linux
       shell: bash
       run: |
         TARGET_FRAMEWORK=$(grep -oP '<TargetFramework>\K[^<]+' rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj | head -n 1)
@@ -63,14 +63,14 @@ jobs:
       if: matrix.os == 'windows-latest'
       shell: pwsh
       run: |
-        $targetPath = "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
+        $targetPath = "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework-windows.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
         New-Item -ItemType Directory -Path $targetPath -Force
 
     - name: Prepare ASF Directory (Linux)
       if: matrix.os == 'ubuntu-latest'
       shell: bash
       run: |
-        mkdir -p "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
+        mkdir -p "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework-linux.outputs.target-framework }}/plugins/ArchiSteamFarm.CustomPlugins.Rin"
 
     - name: Copy Plugin Artifacts (Windows)
       if: matrix.os == 'windows-latest'
@@ -84,7 +84,7 @@ jobs:
         $pluginPath = $pluginPaths[0].FullName
         Write-Host "Found plugin at: $pluginPath"
 
-        $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/'
+        $targetPath = 'ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework-windows.outputs.target-framework }}/plugins/'
         New-Item -ItemType Directory -Path $targetPath -Force
         Copy-Item -Path $pluginPath -Destination $targetPath -Force
 
@@ -98,18 +98,38 @@ jobs:
           exit 1
         fi
         echo "Found DLL at: $DLL_PATH"
-        cp "$DLL_PATH" "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/plugins/"
+        cp "$DLL_PATH" "ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework-linux.outputs.target-framework }}/plugins/"
 
-    - name: Build ASF
+    - name: Build ASF (Windows)
+      if: matrix.os == 'windows-latest'
       working-directory: ArchiSteamFarm
+      shell: pwsh
       run: |
         dotnet restore
-        dotnet publish -c Release -o bin/Release/${{ steps.detect-framework.outputs.target-framework }}
+        dotnet publish -c Release -o bin/Release/${{ steps.detect-framework-windows.outputs.target-framework }}
 
-    - name: Package Artifacts
+    - name: Build ASF (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      working-directory: ArchiSteamFarm
+      shell: bash
+      run: |
+        dotnet restore
+        dotnet publish -c Release -o bin/Release/${{ steps.detect-framework-linux.outputs.target-framework }}
+
+    - name: Package Artifacts (Windows)
+      if: matrix.os == 'windows-latest'
       uses: actions/upload-artifact@v4
       with:
-        name: asf-with-plugin-${{ matrix.os }}
+        name: asf-with-plugin-windows
         path: |
-          ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework.outputs.target-framework }}/**
+          ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework-windows.outputs.target-framework }}/**
+        compression-level: 0
+
+    - name: Package Artifacts (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: asf-with-plugin-linux
+        path: |
+          ArchiSteamFarm/ArchiSteamFarm/bin/Release/${{ steps.detect-framework-linux.outputs.target-framework }}/**
         compression-level: 0
