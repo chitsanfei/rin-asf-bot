@@ -19,15 +19,26 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.x
     - name: Restore dependencies for asf-rin-bot
       run: dotnet restore ./rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj
     - name: Restore dependencies for ArchiSteamFarm
       run: dotnet restore ./rin-asf-bot/ArchiSteamFarm/ArchiSteamFarm/ArchiSteamFarm.csproj
     - name: Build
       run: dotnet build ./rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj --no-restore --configuration Release
+    - name: Find plugin DLL
+      id: find-dll
+      run: |
+        # Find the plugin DLL dynamically regardless of target framework version
+        DLL_PATH=$(find ./rin-asf-bot/rin-asf-bot/bin/Release -name "ArchiSteamFarm.CustomPlugins.Rin.dll" -type f | head -n 1)
+        if [ -z "$DLL_PATH" ]; then
+          echo "Error: Plugin DLL not found"
+          exit 1
+        fi
+        echo "Found DLL at: $DLL_PATH"
+        echo "dll-path=$DLL_PATH" >> $GITHUB_OUTPUT
     - name: Upload ASF DLL artifact
       uses: actions/upload-artifact@v4
       with:
         name: ArchiSteamFarm.CustomPlugins.RinBot
-        path: ./rin-asf-bot/rin-asf-bot/bin/Release/net9.0/ArchiSteamFarm.CustomPlugins.Rin.dll
+        path: ${{ steps.find-dll.outputs.dll-path }}

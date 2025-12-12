@@ -36,23 +36,23 @@ internal static class SetuAPI
 
         int r18 = 0;
         int requestNum = args[1];
-		string quality = "regular";
-	
+		string quality = "original";
+
 		switch (args[0])
 		{
 			case 0:
 				r18 = 0;
-				quality = "regular";
+				quality = "original";
 				break;
 
 			case 1:
 				r18 = 1;
-				quality = "regular";
+				quality = "original";
 				break;
 
             default:
 				r18 = 0;
-                quality = "regular";
+                quality = "original";
                 break;
         }
 
