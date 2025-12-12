@@ -50,8 +50,8 @@ jobs:
     - name: Copy Plugin Artifacts
       shell: pwsh
       run: |
-        # Find plugin DLL dynamically
-        $pluginPaths = Get-ChildItem -Path 'rin-asf-bot' -Recurse -Filter 'ArchiSteamFarm.CustomPlugins.Rin.dll' -PathType Leaf
+        # Find plugin DLL dynamically in any bin/Release/*/ folder
+        $pluginPaths = Get-ChildItem -Path 'rin-asf-bot' -Recurse -Filter 'ArchiSteamFarm.CustomPlugins.Rin.dll' -File
         if ($pluginPaths.Count -eq 0) {
             Write-Error "Plugin DLL not found"
             exit 1
