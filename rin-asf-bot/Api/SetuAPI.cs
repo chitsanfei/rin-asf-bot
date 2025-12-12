@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ArchiSteamFarm.Web;
 using ArchiSteamFarm.Web.Responses;
@@ -97,23 +98,23 @@ internal static class SetuAPI
 
         ObjectResponse<LoliconJson>? response = await webBrowser.UrlGetToJsonObject<LoliconJson>(request).ConfigureAwait(false);
 
-        if (response == null || response.Content == null || response.Content.data == null)
+        if (response == null || response.Content == null || response.Content.Data == null)
         {
             return string.Empty;
         }
 
         if (requestNum == 1)
         {
-            return response.Content.data[0].urls.regular;
+            return response.Content.Data[0].Urls?.Regular;
         }
 
         var resultBuilder = new System.Text.StringBuilder();
 
-        foreach (var item in response.Content.data)
+        foreach (var item in response.Content.Data)
         {
-            if (!string.IsNullOrEmpty(item.urls.regular))
+            if (!string.IsNullOrEmpty(item.Urls?.Regular))
             {
-                resultBuilder.AppendLine(item.urls.regular);
+                resultBuilder.AppendLine(item.Urls.Regular);
             }
         }
 
@@ -125,8 +126,11 @@ internal static class SetuAPI
     /// </summary>
     private class LoliconJson
     {
-        public string error { get; set; }
-        public List<SetuImageJson> data { get; set; }
+        [JsonPropertyName("error")]
+        public string? Error { get; set; }
+
+        [JsonPropertyName("data")]
+        public List<SetuImageJson>? Data { get; set; }
     }
 
     /// <summary>
@@ -134,23 +138,48 @@ internal static class SetuAPI
     /// </summary>
     private class SetuImageJson
     {
-        public int pid { get; set; }
-        public int p { get; set; }
-        public int uid { get; set; }
-        public string title { get; set; }
-        public string author { get; set; }
-        public Urls urls { get; set; }
-        public bool r18 { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
-        public List<string> tags { get; set; }
-        public string ext { get; set; }
-        public long uploadDate { get; set; }
+        [JsonPropertyName("pid")]
+        public int Pid { get; set; }
+
+        [JsonPropertyName("p")]
+        public int P { get; set; }
+
+        [JsonPropertyName("uid")]
+        public int Uid { get; set; }
+
+        [JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [JsonPropertyName("author")]
+        public string? Author { get; set; }
+
+        [JsonPropertyName("urls")]
+        public Urls? Urls { get; set; }
+
+        [JsonPropertyName("r18")]
+        public bool R18 { get; set; }
+
+        [JsonPropertyName("width")]
+        public int Width { get; set; }
+
+        [JsonPropertyName("height")]
+        public int Height { get; set; }
+
+        [JsonPropertyName("tags")]
+        public List<string>? Tags { get; set; }
+
+        [JsonPropertyName("ext")]
+        public string? Ext { get; set; }
+
+        [JsonPropertyName("uploadDate")]
+        public long UploadDate { get; set; }
     }
 
     private class Urls
     {
-        public string regular { get; set; }
+        [JsonPropertyName("regular")]
+        public string? Regular { get; set; }
+
         //public string original { get; set; }
     }
 

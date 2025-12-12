@@ -1,39 +1,45 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <Description>ArchiSteamFarm.CustomPlugins.Bot.Rin</Description>
-    <LangVersion>preview</LangVersion>
-    <Nullable>enable</Nullable>
-    <TargetFramework>net9.0</TargetFramework>
-    <Version>1.0.0</Version>
-    <EnableDynamicLoading>true</EnableDynamicLoading>
-    <RollForward>LatestMajor</RollForward>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<Description>ArchiSteamFarm.CustomPlugins.Bot.Rin</Description>
+		<Version>1.1.0</Version>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+		<NoWarn>$(NoWarn),CS1591,CS8632</NoWarn>
+		<OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
+		<GenerateOpenApiDocuments>false</GenerateOpenApiDocuments>
+		<EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="all" />
-    <PackageReference Include="SteamKit2" Version="3.0.2" />
-    <PackageReference Include="System.Composition.AttributedModel" Version="9.0.3" IncludeAssets="compile" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="JetBrains.Annotations.Sources" Version="2025.2.2" PrivateAssets="all" />
+		<PackageReference Include="SteamKit2" Version="3.3.1" IncludeAssets="compile" />
+		<PackageReference Include="System.Composition.AttributedModel" Version="10.0.0" IncludeAssets="compile" />
+		<PackageReference Include="Microsoft.OpenApi" Version="2.0.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" PrivateAssets="all" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ArchiSteamFarm\ArchiSteamFarm\ArchiSteamFarm.csproj" ExcludeAssets="all" Private="false" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ArchiSteamFarm\ArchiSteamFarm\ArchiSteamFarm.csproj" ExcludeAssets="all" Private="false" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Localization\Langs.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Langs.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Localization\Langs.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Langs.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Localization\Langs.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Langs.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Localization\Langs.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Langs.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Copy SourceFolders="$(TargetDir)" DestinationFolder="..\ArchiSteamFarm\bin\$(Configuration)\$(TargetFramework)\plugins\$(AssemblyName)\" SkipUnchangedFiles="true" />
+	</Target>
 </Project>

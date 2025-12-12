@@ -74,16 +74,13 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
         /// </summary>
         /// <param name="bot">The bot instance</param>
         /// <param name="additionalConfigProperties">Additional configuration properties</param>
-        public async Task OnBotInitModules(Steam.Bot bot, IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null) {
-            bot.ArchiLogger.LogGenericInfo("Pausing this bot as asked from the plugin");
-            await bot.Actions.Pause(true).ConfigureAwait(false);
-        }
+        public Task OnBotInitModules(ArchiSteamFarm.Steam.Bot bot, IReadOnlyDictionary<string, JsonElement>? additionalConfigProperties = null) => Task.CompletedTask;
 
         /// <summary>
         /// Initializes the bot
         /// </summary>
         /// <param name="bot">The bot instance</param>
-        public Task OnBotInit(Steam.Bot bot) {
+        public Task OnBotInit(ArchiSteamFarm.Steam.Bot bot) {
             ASF.ArchiLogger.LogGenericWarning($"{Langs.InitNotice}{Langs.VersionASF}\n{Langs.InitProgramUnstable}");
             return Task.CompletedTask;
         }
@@ -92,7 +89,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
         /// Called when bot logs on to Steam
         /// </summary>
         /// <param name="bot">The bot instance</param>
-        public Task OnBotLoggedOn(Steam.Bot bot) => Task.CompletedTask;
+        public Task OnBotLoggedOn(ArchiSteamFarm.Steam.Bot bot) => Task.CompletedTask;
         
         /// <summary>
         /// Processes bot commands
@@ -101,14 +98,14 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
         /// <param name="access">Access level of the user</param>
         /// <param name="message">The message content</param>
         /// <param name="args">Command arguments</param>
-        /// <param name="steamId">Steam ID of the user</param>
+        /// <param name="steamID">Steam ID of the user</param>
         /// <returns>Response message or null</returns>
-        public async Task<string?> OnBotCommand(Steam.Bot bot, EAccess access, string message, string[] args, ulong steamId = 0) {
+        public async Task<string?> OnBotCommand(ArchiSteamFarm.Steam.Bot bot, EAccess access, string message, string[] args, ulong steamID = 0) {
             // Rate Limiting
-            if (Utils.IsRateLimitExceeded(UserRequestLimits, steamId)) {
+            if (Utils.IsRateLimitExceeded(UserRequestLimits, steamID)) {
                 return Langs.WarningRateLimit;
             }
-            Utils.UpdateUserRequestCount(UserRequestLimits, steamId);
+            Utils.UpdateUserRequestCount(UserRequestLimits, steamID);
 
             // Helper Functions to Get URL or Error Message
             Func<Task<string?>, string, Task<string?>> getUrlOrErrorMessage = async (getUrlTask, errorMessage) => {
@@ -199,7 +196,7 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
         /// </summary>
         /// <param name="bot">The bot instance</param>
         /// <param name="reason">Reason for disconnection</param>
-        public Task OnBotDisconnected(Steam.Bot bot, EResult reason) {
+        public Task OnBotDisconnected(ArchiSteamFarm.Steam.Bot bot, EResult reason) {
             ASF.ArchiLogger.LogGenericWarning(Langs.WarningBotDisconnected);
             return Task.CompletedTask;
         }
@@ -211,13 +208,13 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
         /// <param name="steamId">Steam ID of the sender</param>
         /// <param name="message">The message content</param>
         /// <returns>Response message or null</returns>
-        public Task<string?> OnBotMessage(Steam.Bot bot, ulong steamId, string message) {
-            if (Steam.Bot.BotsReadOnly == null) {
-                throw new InvalidOperationException(nameof(Steam.Bot.BotsReadOnly));
+        public Task<string?> OnBotMessage(ArchiSteamFarm.Steam.Bot bot, ulong steamId, string message) {
+            if (ArchiSteamFarm.Steam.Bot.BotsReadOnly == null) {
+                throw new InvalidOperationException(nameof(ArchiSteamFarm.Steam.Bot.BotsReadOnly));
             }
 
             // Check if Message Contains a Web Link
-            if (Steam.Bot.BotsReadOnly.Values.Any(existingBot => existingBot.SteamID == steamId)) {
+            if (ArchiSteamFarm.Steam.Bot.BotsReadOnly.Values.Any(existingBot => existingBot.SteamID == steamId)) {
                 return Task.FromResult<string?>(null);
             }
 
@@ -236,17 +233,14 @@ namespace ArchiSteamFarm.CustomPlugins.Rin {
             return Task.FromResult((string?)"");
         }
 
-        // Bot Trade Offer Event
-        public Task<bool> OnBotTradeOffer(Steam.Bot bot, TradeOffer tradeOffer) => Task.FromResult(false);
-
         // Bot Friend Request Event
-        public Task<bool> OnBotFriendRequest(Steam.Bot bot, ulong steamId) => Task.FromResult(false);
+        public Task<bool> OnBotFriendRequest(ArchiSteamFarm.Steam.Bot bot, ulong steamId) => Task.FromResult(false);
 
         // Bot Destroy Event
         /// <summary>
         /// Called when bot is being destroyed
         /// </summary>
         /// <param name="bot">The bot instance</param>
-        public Task OnBotDestroy(Steam.Bot bot) => Task.CompletedTask;
+        public Task OnBotDestroy(ArchiSteamFarm.Steam.Bot bot) => Task.CompletedTask;
     }
 }

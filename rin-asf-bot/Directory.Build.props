@@ -1,0 +1,8 @@
+<Project>
+	<PropertyGroup>
+		<!-- 禁用 OpenAPI 生成器 -->
+		<OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
+		<GenerateOpenApiDocuments>false</GenerateOpenApiDocuments>
+		<OpenApiSuppressGenerator>true</OpenApiSuppressGenerator>
+	</PropertyGroup>
+</Project>
