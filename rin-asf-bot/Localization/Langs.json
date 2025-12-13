@@ -14,7 +14,7 @@
   "ErrorCatFailed": "❌ 猫猫图片获取失败！",
   "ErrorR18NotAllowed": "❌ R18 内容需要特殊权限！",
   "WarningRateLimit": "⏱️ 请求过于频繁，请稍后再试！",
-  "WarningWebLink": "检测到网页链接，请使用 Steam 社区或 Steam 商店链接！",
+  "WarningWebLink": "Rin侦测到可能的一条链接哦！诈骗多发，请务必警惕陌生链接，网页千万条安全第一条。不要输入自己的任何账号密码，泄漏财产信息哦！！！",
   "WarningBotDisconnected": "⚠️ Bot 已断开连接！",
   "HelpMessage": "🤖 RinBot 帮助菜单：\n/SETU [数量] - 获取色图\n/R18 [数量] - 获取 R18 内容（需权限）\n/ANIME [数量] - 获取动漫图片\n/CAT [数量] - 获取猫猫图片\n/H - 显示此帮助菜单\n/ABT - 关于插件",
   "AboutMessage": "ℹ️ RinBot 插件信息：\n版本：1.1.0.0\nASF 版本：6.3.0.2\n构建日期：2025/12/13\n作者：@chitsanfei\nGitHub：https://github.com/chitsanfei/rin-asf-bot",
