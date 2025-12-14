@@ -24,13 +24,10 @@
 		<ProjectReference Include="..\ArchiSteamFarm\ArchiSteamFarm\ArchiSteamFarm.csproj" ExcludeAssets="all" Private="false" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<None Include="Localization\Langs.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Copy SourceFolders="$(TargetDir)" DestinationFolder="..\ArchiSteamFarm\bin\$(Configuration)\$(TargetFramework)\plugins\$(AssemblyName)\" SkipUnchangedFiles="true" />
+		<ItemGroup>
+			<PluginFiles Include="$(TargetDir)**\*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(PluginFiles)" DestinationFolder="..\ArchiSteamFarm\bin\$(Configuration)\$(TargetFramework)\plugins\$(AssemblyName)\%(RecursiveDir)" SkipUnchangedFiles="true" />
 	</Target>
 </Project>
