@@ -38,7 +38,7 @@ jobs:
         echo "Found DLL at: $DLL_PATH"
         echo "dll-path=$DLL_PATH" >> $GITHUB_OUTPUT
     - name: Upload ASF DLL artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: ArchiSteamFarm.CustomPlugins.RinBot
         path: ${{ steps.find-dll.outputs.dll-path }}
