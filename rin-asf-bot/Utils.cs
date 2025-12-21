@@ -44,7 +44,9 @@ public class Utils
     /// <returns>True if user has sufficient permissions, false otherwise</returns>
     public static bool HasSufficientPermission(EAccess access)
     {
-        return access >= EAccess.Operator && RinConfig.Instance.SetuAllowR18;
+        // If SetuAllowR18 is true, any permission level can use !r18
+        // Otherwise, only Operator (2) and above can use !r18
+        return access >= EAccess.Operator || RinConfig.Instance.SetuAllowR18;
     }
 
     /// <summary>
