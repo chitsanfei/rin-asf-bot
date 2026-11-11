@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 10.0.x
+        dotnet-version: 11.0.x
     - name: Restore dependencies for asf-rin-bot
       run: dotnet restore ./rin-asf-bot/rin-asf-bot/ArchiSteamFarm.CustomPlugins.Rin.csproj
     - name: Restore dependencies for ArchiSteamFarm
